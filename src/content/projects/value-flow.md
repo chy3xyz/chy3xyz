@@ -1,6 +1,8 @@
 ---
 title: "ValueFlow — 变现链路分析"
+titleEn: "ValueFlow — Monetization Pipeline Analytics"
 summary: "开源变现数据分析平台，追踪创意到收入的完整转化链路，提供可视化漏斗、归因模型和收益预测。"
+summaryEn: "An open-source monetization analytics platform that traces the full journey from idea to revenue, with visual funnels, attribution models, and revenue forecasting."
 status: "Active"
 statusTone: "blue"
 icon: "code"

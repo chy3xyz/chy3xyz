@@ -1,7 +1,10 @@
 ---
 title: "创意变现平台的技术架构选型"
+titleEn: "Technical Architecture Choices for Creative Monetization Platforms"
 summary: "构建一个支持多租户、多品类的创意变现平台需要怎样的技术底座？本文从微服务、数据管道、支付集成三个维度展开分析。"
+summaryEn: "What technical foundation does a multi-tenant, multi-category creative monetization platform need? An analysis across microservices, data pipelines, and payment integration."
 category: "技术架构"
+categoryEn: "Technical Architecture"
 readTime: "10 min"
 publishedAt: "2026-04-10"
 image: "/images/insight-article-01.png"

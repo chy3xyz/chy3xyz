@@ -1,6 +1,8 @@
 ---
 title: "AI 协同创作套件"
+titleEn: "AI Co-Creation Suite"
 summary: "集成大语言模型的智能创作助手，覆盖文案生成、设计辅助、代码补全和市场分析。"
+summaryEn: "An intelligent creative assistant integrating large language models, covering copy generation, design assistance, code completion, and market analysis."
 status: "planned"
 quarter: "2027 Q1"
 order: 3

@@ -1,5 +1,6 @@
 ---
 import SiteLayout from './SiteLayout.astro';
+import { defaultLang, useTranslations, type Lang } from '../i18n/ui';
 
 interface Highlight {
   label: string;
@@ -11,14 +12,16 @@ interface Props {
   eyebrow: string;
   highlights?: Highlight[];
   image?: string;
+  lang?: Lang;
   summary: string;
   title: string;
 }
 
-const { description, eyebrow, highlights = [], image, summary, title } = Astro.props;
+const { description, eyebrow, highlights = [], image, lang = defaultLang, summary, title } = Astro.props;
+const t = useTranslations(lang);
 ---
 
-<SiteLayout title={`${title} | CHY3`} description={description ?? summary}>
+<SiteLayout lang={lang} title={`${title} | CHY3`} description={description ?? summary}>
   <main class="mx-auto max-w-7xl px-6 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
     <section
       class={`relative isolate overflow-hidden border border-white/10 bg-white/[0.03] ${image ? 'min-h-[420px] sm:min-h-[520px] lg:min-h-[620px]' : 'p-8 sm:p-10 lg:p-14'}`}
@@ -47,7 +50,7 @@ const { description, eyebrow, highlights = [], image, summary, title } = Astro.p
 
       {highlights.length ? (
         <aside class="order-first border border-white/10 bg-white/[0.04] p-6 sm:p-7 md:order-2 md:sticky md:top-28 md:self-start lg:top-32">
-          <div class="font-display text-[10px] uppercase tracking-[0.24em] text-white/52">Core Signals</div>
+          <div class="font-display text-[10px] uppercase tracking-[0.24em] text-white/52">{t['coreSignals']}</div>
           <dl class="mt-6 space-y-5">
             {highlights.map((item) => (
               <div>

@@ -1,15 +1,24 @@
 ---
 title: "开源生态"
+titleEn: "Open-Source Ecosystem"
 summary: "CHY3 不仅仅是工具集合，更是一个开放的技术生态。我们通过标准化接口和社区治理，连接创作者、开发者和平台运营者。"
+summaryEn: "CHY3 is more than a collection of tools — it's an open technology ecosystem connecting creators, developers, and platform operators through standardized interfaces and community governance."
 eyebrow: "生态体系"
+eyebrowEn: "Ecosystem"
 image: "/images/singleton-about.png"
 highlights:
   - label: "参与者"
+    labelEn: "Participants"
     value: "独立创作者、开源开发者、内容平台、中小企业和学术研究者"
+    valueEn: "Independent creators, open-source developers, content platforms, SMBs, and academic researchers"
   - label: "协作方式"
+    labelEn: "How We Collaborate"
     value: "GitHub 开源协作 + 社区论坛 + 定期 Hackathon"
+    valueEn: "GitHub open-source collaboration + community forums + regular hackathons"
   - label: "生态目标"
+    labelEn: "Ecosystem Goal"
     value: "到 2027 年建成 50+ 核心贡献者、200+ 集成项目的创意变现网络"
+    valueEn: "A creative monetization network with 50+ core contributors and 200+ integrated projects by 2027"
 ---
 
 CHY3 的长期竞争力不在于我们写了多少行代码，而在于我们能吸引和连接多少参与者围绕共同的协议和标准进行协作。这是我们从第一天起就将自己定位为「生态」而非「产品」的原因。

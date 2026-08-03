@@ -1,6 +1,8 @@
 ---
 title: "核心平台 GA 发布"
+titleEn: "Core Platform GA Release"
 summary: "IdeaForge + ValueFlow 双引擎正式发布，提供完整的创意孵化到变现分析工作流。"
+summaryEn: "The IdeaForge + ValueFlow dual engines ship GA, delivering a complete workflow from idea incubation to monetization analytics."
 status: "in-progress"
 quarter: "2026 Q3"
 order: 1

@@ -1,9 +1,12 @@
 ---
 title: "CHY3 社区里程碑：1000+ 开发者加入"
+titleEn: "CHY3 Community Milestone: 1,000+ Developers On Board"
 summary: "上线仅一个月，CHY3 开源社区已突破 1000 名注册开发者，累计贡献代码超过 300 次 PR。"
+summaryEn: "Within one month of launch, the CHY3 open-source community has surpassed 1,000 registered developers with 300+ contributions via pull requests."
 publishedAt: "2026-06-10"
 author: "Mira Zhang"
 desk: "社区动态"
+deskEn: "Community"
 image: "/images/blog-article-01.png"
 ---
 

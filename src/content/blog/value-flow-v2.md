@@ -1,9 +1,12 @@
 ---
 title: "ValueFlow v2.0 发布：全链路变现分析"
+titleEn: "ValueFlow v2.0 Release: End-to-End Monetization Analytics"
 summary: "ValueFlow 迎来重大更新，新增多平台数据聚合、AI 驱动的收益归因和自定义 Dashboard 功能。"
+summaryEn: "ValueFlow receives a major update with multi-platform data aggregation, AI-driven revenue attribution, and custom dashboards."
 publishedAt: "2026-06-20"
 author: "Alex Chen"
 desk: "产品更新"
+deskEn: "Product Update"
 image: "/images/blog-article-01.png"
 ---
 

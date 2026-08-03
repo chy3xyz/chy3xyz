@@ -1,6 +1,8 @@
 import { Moon, Sun } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
+import { defaultLang, useTranslations, type Lang } from '../i18n/ui';
+
 const THEME_KEY = 'chy3-theme';
 
 type ThemeMode = 'dark' | 'light';
@@ -27,10 +29,12 @@ function getInitialTheme(): ThemeMode {
 
 interface ThemeToggleProps {
   className?: string;
+  lang?: Lang;
   variant?: ThemeToggleVariant;
 }
 
-export default function ThemeToggle({ className = '', variant = 'shell' }: ThemeToggleProps) {
+export default function ThemeToggle({ className = '', lang = defaultLang, variant = 'shell' }: ThemeToggleProps) {
+  const t = useTranslations(lang);
   const [theme, setTheme] = useState<ThemeMode>('dark');
 
   useEffect(() => {
@@ -55,7 +59,7 @@ export default function ThemeToggle({ className = '', variant = 'shell' }: Theme
   return (
     <button
       type="button"
-      aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+      aria-label={isDark ? t['theme.light'] : t['theme.dark']}
       aria-pressed={isDark}
       onClick={toggleTheme}
       className={`inline-flex h-9 w-9 items-center justify-center rounded-full backdrop-blur-sm transition-colors duration-300 ${variantClassName} ${className}`.trim()}

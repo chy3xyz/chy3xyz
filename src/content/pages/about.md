@@ -1,15 +1,24 @@
 ---
 title: "关于 CHY3"
+titleEn: "About CHY3"
 summary: "CHY3 是一个开源创意变现基础设施项目，致力于降低创作者和开发者将创意转化为可持续收入的门槛。我们相信开源协作是数字创意经济的最佳组织形式。"
+summaryEn: "CHY3 is an open-source creative monetization infrastructure project that lowers the barrier for creators and developers to turn ideas into sustainable income. We believe open-source collaboration is the best organizing model for the digital creative economy."
 eyebrow: "组织概况"
+eyebrowEn: "Organization Overview"
 image: "/images/singleton-about.png"
 highlights:
   - label: "使命"
+    labelEn: "Mission"
     value: "构建开放、透明、可组合的创意变现工具链，让每个有价值的想法都能找到商业化的路径。"
+    valueEn: "Building an open, transparent, and composable creative monetization toolchain so every valuable idea can find its path to commercialization."
   - label: "运作模式"
+    labelEn: "Operating Model"
     value: "完全开源、社区驱动，核心技术栈以 Apache 2.0 / MIT 协议发布。"
+    valueEn: "Fully open source and community-driven; the core tech stack is released under Apache 2.0 / MIT licenses."
   - label: "成立时间"
+    labelEn: "Founded"
     value: "2026"
+    valueEn: "2026"
 ---
 
 CHY3 诞生于一个朴素但重要的问题：在数字创意蓬勃发展的时代，为什么将创意转化为可持续收入仍然如此困难？我们发现，问题不在于缺少创意或缺少受众，而在于缺少为创作者量身定制的、开放且可组合的基础设施。主流的变现工具要么是封闭的商业平台，要么是为大型企业设计的复杂系统——独立创作者被夹在中间，不得不在灵活性和功能完备性之间做出妥协。

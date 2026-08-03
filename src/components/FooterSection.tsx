@@ -2,16 +2,19 @@ import { MotionConfig, motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 
 import type { FooterMeta, NavLink } from '../data/site';
+import { defaultLang, useTranslations, type Lang } from '../i18n/ui';
 import BrandLogo from './BrandLogo';
 import { aeonEase } from './motion';
 
 interface FooterSectionProps {
   directory: NavLink[];
+  lang?: Lang;
   meta: FooterMeta;
   policies: string[];
 }
 
-export default function FooterSection({ directory, meta, policies }: FooterSectionProps) {
+export default function FooterSection({ directory, lang = defaultLang, meta, policies }: FooterSectionProps) {
+  const t = useTranslations(lang);
   const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
@@ -33,7 +36,7 @@ export default function FooterSection({ directory, meta, policies }: FooterSecti
             </div>
 
             <div>
-              <h3 className="font-display text-[11px] uppercase tracking-[0.26em] text-white/80">Directory</h3>
+              <h3 className="font-display text-[11px] uppercase tracking-[0.26em] text-white/80">{t['footer.directory']}</h3>
               <ul className="mt-6 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
                 {directory.map((item) => (
                   <li key={item.label}>
@@ -46,7 +49,7 @@ export default function FooterSection({ directory, meta, policies }: FooterSecti
             </div>
 
             <div>
-              <h3 className="font-display text-[11px] uppercase tracking-[0.26em] text-white/80">Connect</h3>
+              <h3 className="font-display text-[11px] uppercase tracking-[0.26em] text-white/80">{t['footer.connect']}</h3>
               <div className="mt-6 space-y-3 text-[1.1rem] text-white/60">
                 <p>
                   <a href="https://github.com/chy3xyz" className="transition-colors duration-300 hover:text-accent-blue">github.com/chy3xyz</a>
@@ -54,7 +57,7 @@ export default function FooterSection({ directory, meta, policies }: FooterSecti
                 <p>
                   <a href="https://chy3.xyz" className="transition-colors duration-300 hover:text-accent-blue">chy3.xyz</a>
                 </p>
-                <p>开源社区 · 全球协作</p>
+                <p>{t['footer.community']}</p>
               </div>
             </div>
           </div>

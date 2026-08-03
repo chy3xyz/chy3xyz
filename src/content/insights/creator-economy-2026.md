@@ -1,7 +1,10 @@
 ---
 title: "2026 创作者经济：从流量思维到价值沉淀"
+titleEn: "The 2026 Creator Economy: From Attention to Value"
 summary: "创作者经济正在经历从注意力经济到价值经济的范式转移。本文分析独立创作者如何借助开源工具构建可持续的变现闭环。"
+summaryEn: "The creator economy is shifting from an attention economy to a value economy. This article examines how independent creators can build sustainable monetization loops with open-source tools."
 category: "行业洞察"
+categoryEn: "Industry Insight"
 readTime: "8 min"
 publishedAt: "2026-06-15"
 image: "/images/insight-article-01.png"

@@ -1,10 +1,10 @@
 ---
-import FooterSection from '../components/FooterSection';
-import HeroShell from '../components/HeroShell';
-import ProjectsSection from '../components/ProjectsSection';
-import StatsSection from '../components/StatsSection';
-import RoadmapSection from '../components/RoadmapSection';
-import InsightSection from '../components/InsightSection';
+import FooterSection from '../../components/FooterSection';
+import HeroShell from '../../components/HeroShell';
+import ProjectsSection from '../../components/ProjectsSection';
+import StatsSection from '../../components/StatsSection';
+import RoadmapSection from '../../components/RoadmapSection';
+import InsightSection from '../../components/InsightSection';
 import {
   footerDirectoryFor,
   footerMetaFor,
@@ -14,8 +14,8 @@ import {
   heroRightPaths,
   navFor,
   statsFor,
-} from '../data/site';
-import { switchLangHref, useTranslations, type Lang } from '../i18n/ui';
+} from '../../data/site';
+import { switchLangHref, useTranslations, type Lang } from '../../i18n/ui';
 import {
   getProjectEntries,
   getInsightEntries,
@@ -23,10 +23,10 @@ import {
   toProjectCard,
   toInsightContent,
   toRoadmapItem,
-} from '../lib/content';
-import '../styles/global.css';
+} from '../../lib/content';
+import '../../styles/global.css';
 
-const lang: Lang = 'en';
+const lang: Lang = 'zh';
 const t = useTranslations(lang);
 
 const [projectEntries, insightEntries, roadmapEntries] = await Promise.all([

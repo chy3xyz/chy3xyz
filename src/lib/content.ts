@@ -5,6 +5,7 @@ import type {
   ProjectCardProps,
   RoadmapItemProps,
 } from '../data/site';
+import { localizePath, useTranslations, type Lang } from '../i18n/ui';
 import { formatReadingTime } from './format';
 
 export type ProjectEntry = CollectionEntry<'projects'>;
@@ -17,6 +18,11 @@ export type SingletonPageId = 'about' | 'platform' | 'ecosystem';
 export function estimateReadingTime(body: string) {
   const words = body.trim().split(/\s+/).filter(Boolean).length;
   return Math.max(1, Math.ceil(words / 200));
+}
+
+/** Pick the English field when present on the English site, falling back to the Chinese original. */
+export function localizedField(lang: Lang, zh: string, en?: string) {
+  return lang === 'en' ? en ?? zh : zh;
 }
 
 export function getReadingTimeLabel(body: string) {
@@ -51,45 +57,44 @@ export async function getPageEntry(id: SingletonPageId) {
   return entry;
 }
 
-export function toProjectCard(entry: ProjectEntry): ProjectCardProps {
+export function toProjectCard(entry: ProjectEntry, lang: Lang): ProjectCardProps {
   return {
-    title: entry.data.title,
-    description: entry.data.summary,
+    title: localizedField(lang, entry.data.title, entry.data.titleEn),
+    description: localizedField(lang, entry.data.summary, entry.data.summaryEn),
     status: entry.data.status,
     statusTone: entry.data.statusTone,
     icon: entry.data.icon,
-    href: `/projects/${entry.id}/`,
+    href: localizePath(`/projects/${entry.id}/`, lang),
   };
 }
 
-export function toInsightContent(entry: InsightEntry): InsightContent {
+export function toInsightContent(entry: InsightEntry, lang: Lang): InsightContent {
+  const t = useTranslations(lang);
   return {
-    label: entry.data.category,
-    title: entry.data.title,
-    body: entry.data.summary,
+    label: localizedField(lang, entry.data.category, entry.data.categoryEn),
+    title: localizedField(lang, entry.data.title, entry.data.titleEn),
+    body: localizedField(lang, entry.data.summary, entry.data.summaryEn),
     readTime: entry.data.readTime,
     cta: {
-      href: `/insights/${entry.id}/`,
-      label: '阅读全文',
+      href: localizePath(`/insights/${entry.id}/`, lang),
+      label: t['insights.readMore'],
     },
-    archiveHref: '/insights/',
-    archiveLabel: '查看全部洞察',
+    archiveHref: localizePath('/insights/', lang),
+    archiveLabel: t['insights.archive'],
     image: entry.data.image,
   };
 }
 
-export function toRoadmapItem(entry: RoadmapEntry): RoadmapItemProps {
-  const statusLabels: Record<string, string> = {
-    planned: '计划中',
-    'in-progress': '开发中',
-    shipped: '已发布',
-  };
+export function toRoadmapItem(entry: RoadmapEntry, lang: Lang): RoadmapItemProps {
+  const t = useTranslations(lang);
+  const statusLabel = t['roadmap.status'][entry.data.status];
 
   return {
     quarter: entry.data.quarter,
-    status: statusLabels[entry.data.status] ?? entry.data.status,
-    title: entry.data.title,
-    summary: entry.data.summary,
-    href: `/roadmap/${entry.id}/`,
+    status: statusLabel,
+    statusKey: entry.data.status,
+    title: localizedField(lang, entry.data.title, entry.data.titleEn),
+    summary: localizedField(lang, entry.data.summary, entry.data.summaryEn),
+    href: localizePath(`/roadmap/${entry.id}/`, lang),
   };
 }

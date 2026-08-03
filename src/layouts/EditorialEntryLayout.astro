@@ -1,5 +1,6 @@
 ---
 import SiteLayout from './SiteLayout.astro';
+import { defaultLang, useTranslations, type Lang } from '../i18n/ui';
 
 interface DetailItem {
   label: string;
@@ -13,6 +14,7 @@ interface Props {
   details: DetailItem[];
   eyebrow: string;
   image?: string;
+  lang?: Lang;
   summary: string;
   title: string;
 }
@@ -24,12 +26,14 @@ const {
   details,
   eyebrow,
   image,
+  lang = defaultLang,
   summary,
   title,
 } = Astro.props;
+const t = useTranslations(lang);
 ---
 
-<SiteLayout title={`${title} | CHY3`} description={description ?? summary}>
+<SiteLayout lang={lang} title={`${title} | CHY3`} description={description ?? summary}>
   <main class="mx-auto max-w-7xl px-6 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
     <a
       href={backHref}
@@ -47,7 +51,7 @@ const {
       </div>
 
       <aside class="border border-white/10 bg-white/[0.03] p-6 sm:p-7">
-        <div class="font-display text-[10px] uppercase tracking-[0.24em] text-white/52">Article Data</div>
+        <div class="font-display text-[10px] uppercase tracking-[0.24em] text-white/52">{t['articleData']}</div>
         <dl class="mt-6 space-y-5">
           {details.map((item) => (
             <div>

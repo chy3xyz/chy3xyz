@@ -1,11 +1,11 @@
 ---
 import { render } from 'astro:content';
 
-import SingletonPageLayout from '../layouts/SingletonPageLayout.astro';
-import type { Lang } from '../i18n/ui';
-import { getPageEntry, localizedField } from '../lib/content';
+import SingletonPageLayout from '../../layouts/SingletonPageLayout.astro';
+import type { Lang } from '../../i18n/ui';
+import { getPageEntry, localizedField } from '../../lib/content';
 
-const lang: Lang = 'en';
+const lang: Lang = 'zh';
 const entry = await getPageEntry('about');
 const { Content } = await render(entry);
 

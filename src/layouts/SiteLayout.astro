@@ -2,16 +2,21 @@
 import FooterSection from '../components/FooterSection';
 import BrandLogo from '../components/BrandLogo';
 import ThemeToggle from '../components/ThemeToggle';
-import { footerDirectory, footerMeta, footerPolicies, siteNav } from '../data/site';
+import { footerDirectoryFor, footerMetaFor, footerPoliciesFor, navFor, siteNavPaths } from '../data/site';
+import { defaultLang, switchLangHref, useTranslations, type Lang } from '../i18n/ui';
 import '../styles/global.css';
 
 interface Props {
   description?: string;
+  lang?: Lang;
   title: string;
 }
 
-const { description = 'CHY3 创意变现平台。', title } = Astro.props;
+const { description, lang = defaultLang, title } = Astro.props;
+const t = useTranslations(lang);
+const siteNav = navFor(lang, siteNavPaths);
 const currentPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const langHref = switchLangHref(currentPath, lang);
 
 function normalizePath(path: string) {
   if (path === '/') {
@@ -32,14 +37,14 @@ function isActivePath(path: string) {
 }
 ---
 
-<html lang="zh-CN" class="bg-page-bg">
+<html lang={lang} class="bg-page-bg">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
+    <meta name="description" content={description ?? t['site.description']} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -70,8 +75,15 @@ function isActivePath(path: string) {
               <BrandLogo className="w-full" />
             </a>
             <div class="flex items-center gap-2 sm:gap-4">
-              <span class="hidden font-display text-[10px] uppercase tracking-[0.26em] text-white/40 sm:inline">Public Network</span>
-              <ThemeToggle client:load className="h-10 w-10" />
+              <span class="hidden font-display text-[10px] uppercase tracking-[0.26em] text-white/40 sm:inline">{t['header.label']}</span>
+              <a
+                href={langHref}
+                class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 font-display text-[10px] uppercase tracking-[0.18em] text-white backdrop-blur-sm transition-colors duration-300 hover:border-accent-blue/45 hover:text-accent-blue"
+                aria-label={lang === 'en' ? 'Switch to 中文' : 'Switch to English'}
+              >
+                {t['lang.switch']}
+              </a>
+              <ThemeToggle client:load lang={lang} className="h-10 w-10" />
               <details class="group relative flex items-center md:hidden">
                 <summary
                   class="relative inline-flex h-10 w-10 shrink-0 cursor-pointer list-none items-center justify-center rounded-full border border-white/15 bg-white/10 text-white backdrop-blur-sm transition-colors duration-300 hover:border-accent-blue/45 hover:text-accent-blue [&::-webkit-details-marker]:hidden"
@@ -172,9 +184,10 @@ function isActivePath(path: string) {
       <slot />
       <FooterSection
         client:visible
-        directory={footerDirectory}
-        meta={footerMeta}
-        policies={footerPolicies}
+        lang={lang}
+        directory={footerDirectoryFor(lang)}
+        meta={footerMetaFor(lang)}
+        policies={footerPoliciesFor(lang)}
       />
     </div>
   </body>

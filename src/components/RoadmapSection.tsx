@@ -5,21 +5,25 @@ import { ArrowRight, Route } from 'lucide-react';
 import { useRef } from 'react';
 
 import type { RoadmapItemProps } from '../data/site';
+import { defaultLang, useTranslations, type Lang } from '../i18n/ui';
 import { aeonEase, fadeUpTransition, inViewViewport } from './motion';
 
 interface RoadmapSectionProps {
   items: RoadmapItemProps[];
+  lang?: Lang;
 }
 
-const statusStyles: Record<string, string> = {
-  '计划中': 'bg-slate-500/15 text-slate-400 border-slate-500/25',
-  '开发中': 'bg-blue-500/15 text-blue-400 border-blue-500/25',
-  '已发布': 'bg-emerald-500/15 text-emerald-400 border-emerald-500/25',
-};
+const statusStyles = {
+  planned: 'bg-slate-500/15 text-slate-400 border-slate-500/25',
+  'in-progress': 'bg-blue-500/15 text-blue-400 border-blue-500/25',
+  shipped: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/25',
+} as const;
 
-function RoadmapItem({ quarter, status, title, summary, href, index }: RoadmapItemProps & { index: number }) {
+function RoadmapItem({ quarter, status, statusKey, title, summary, href, index, lang }: RoadmapItemProps & { index: number; lang: Lang }) {
+  const t = useTranslations(lang);
   const ref = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const statusStyle = statusStyles[statusKey ?? 'planned'];
 
   return (
     <motion.div
@@ -34,7 +38,7 @@ function RoadmapItem({ quarter, status, title, summary, href, index }: RoadmapIt
           {quarter}
         </span>
         <span
-          className={`rounded-full border px-3 py-1 font-display text-[10px] uppercase tracking-[0.20em] sm:mt-3 sm:inline-block ${statusStyles[status] ?? statusStyles['计划中']}`}
+          className={`rounded-full border px-3 py-1 font-display text-[10px] uppercase tracking-[0.20em] sm:mt-3 sm:inline-block ${statusStyle}`}
         >
           {status}
         </span>
@@ -48,14 +52,15 @@ function RoadmapItem({ quarter, status, title, summary, href, index }: RoadmapIt
           href={href}
           className="mt-5 inline-flex items-center gap-3 font-display text-[11px] uppercase tracking-[0.26em] text-white/52 transition-colors duration-300 hover:text-accent-blue"
         >
-          了解更多 <ArrowRight size={14} />
+          {t['roadmap.learnMore']} <ArrowRight size={14} />
         </a>
       </div>
     </motion.div>
   );
 }
 
-export default function RoadmapSection({ items }: RoadmapSectionProps) {
+export default function RoadmapSection({ items, lang = defaultLang }: RoadmapSectionProps) {
+  const t = useTranslations(lang);
   return (
     <MotionConfig reducedMotion="user">
       <section id="roadmap" className="bg-dark-space py-20 sm:py-24">
@@ -68,16 +73,16 @@ export default function RoadmapSection({ items }: RoadmapSectionProps) {
           >
             <div className="flex items-center gap-3 font-display text-[11px] uppercase tracking-[0.26em] text-warm-gold">
               <Route size={16} strokeWidth={1.6} />
-              <span>产品路线图</span>
+              <span>{t['roadmap.eyebrow']}</span>
             </div>
             <h2 className="mt-5 break-words font-display text-[2.85rem] leading-none font-bold text-white sm:text-6xl">
-              Product Roadmap
+              {t['roadmap.title']}
             </h2>
           </motion.div>
 
           <div className="mt-14 max-w-4xl">
             {items.map((item, index) => (
-              <RoadmapItem key={`${item.quarter}-${item.title}`} index={index} {...item} />
+              <RoadmapItem key={`${item.quarter}-${item.title}`} lang={lang} index={index} {...item} />
             ))}
           </div>
         </div>

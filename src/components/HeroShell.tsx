@@ -3,12 +3,15 @@ import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 
 import type { HeroContent, NavLink } from '../data/site';
+import { defaultLang, useTranslations, type Lang } from '../i18n/ui';
 import BrandLogo from './BrandLogo';
 import ThemeToggle from './ThemeToggle';
 import { aeonEase } from './motion';
 
 interface HeroShellProps {
   content: HeroContent;
+  lang?: Lang;
+  langHref: string;
   leftNav: NavLink[];
   mobileNav: NavLink[];
   rightNav: NavLink[];
@@ -45,10 +48,13 @@ function createHeroStars(count = 60): HeroStar[] {
 
 export default function HeroShell({
   content,
+  lang = defaultLang,
+  langHref,
   leftNav,
   mobileNav,
   rightNav,
 }: HeroShellProps) {
+  const t = useTranslations(lang);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const orbitalRings = [
     {
@@ -121,13 +127,20 @@ export default function HeroShell({
               <span className="hero-utility-label hidden font-display text-[10px] uppercase tracking-[0.25em] lg:block">
                 {content.utilityLabel}
               </span>
-              <ThemeToggle variant="hero" />
+              <ThemeToggle variant="hero" lang={lang} />
+              <a
+                href={langHref}
+                className="rounded-full border border-navy-text/15 bg-page-cream/78 px-3 py-2 font-display text-[10px] uppercase tracking-[0.18em] text-navy-text backdrop-blur-sm transition-colors duration-300 hover:bg-white"
+                aria-label={lang === 'en' ? 'Switch to 中文' : 'Switch to English'}
+              >
+                {t['lang.switch']}
+              </a>
               <button
                 type="button"
                 className="rounded-full border border-navy-text/15 bg-page-cream/78 p-2 text-navy-text backdrop-blur-sm transition-colors duration-300 hover:bg-white lg:hidden"
                 aria-expanded={isMenuOpen}
                 aria-controls="mobile-navigation"
-                aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+                aria-label={isMenuOpen ? t['hero.closeMenu'] : t['hero.openMenu']}
                 onClick={() => setIsMenuOpen((open) => !open)}
               >
                 {isMenuOpen ? <X size={18} strokeWidth={1.5} /> : <Menu size={18} strokeWidth={1.5} />}

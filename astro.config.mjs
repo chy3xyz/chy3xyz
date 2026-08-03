@@ -21,6 +21,13 @@ export default defineConfig({
   site: 'https://chy3.xyz',
   ...(adapter ? { adapter } : {}),
   integrations: [react()],
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'zh'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
   },

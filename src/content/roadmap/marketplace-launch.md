@@ -1,6 +1,8 @@
 ---
 title: "创作者集市上线"
+titleEn: "Creator Marketplace Launch"
 summary: "面向独立创作者的内容/工具交易市场，支持开源项目众筹、数字产品分发和协作匹配。"
+summaryEn: "A trading marketplace for independent creators — open-source crowdfunding, digital product distribution, and collaboration matching."
 status: "planned"
 quarter: "2026 Q4"
 order: 2

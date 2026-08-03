@@ -1,10 +1,10 @@
 ---
-import CollectionIndexLayout from '../../layouts/CollectionIndexLayout.astro';
-import { localizePath, useTranslations, type Lang } from '../../i18n/ui';
-import { formatLongDate } from '../../lib/format';
-import { getInsightEntries, localizedField } from '../../lib/content';
+import CollectionIndexLayout from '../../../layouts/CollectionIndexLayout.astro';
+import { localizePath, useTranslations, type Lang } from '../../../i18n/ui';
+import { formatLongDate } from '../../../lib/format';
+import { getInsightEntries, localizedField } from '../../../lib/content';
 
-const lang: Lang = 'en';
+const lang: Lang = 'zh';
 const t = useTranslations(lang);
 const insights = await getInsightEntries();
 ---
@@ -13,8 +13,8 @@ const insights = await getInsightEntries();
   lang={lang}
   title="Insights | CHY3"
   eyebrow="Collection Archive"
-  intro="Frontier insights and case studies across creative monetization — platform strategy, the creator economy, and open-source commercialization."
-  description="Browse CHY3 creative monetization insights and case studies"
+  intro="创意变现领域的前沿洞察与案例分析，涵盖平台策略、创作者经济和开源商业化实践。"
+  description="浏览 CHY3 创意变现洞察与案例研究"
 >
   <div class="grid gap-6 lg:grid-cols-2">
     {insights.map((insight) => (

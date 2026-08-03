@@ -1,3 +1,5 @@
+import { localizePath, useTranslations, type Lang } from '../i18n/ui';
+
 export interface NavLink {
   href: string;
   label: string;
@@ -29,6 +31,7 @@ export interface StatBlockProps {
 export interface RoadmapItemProps {
   quarter: string;
   status: string;
+  statusKey?: 'planned' | 'in-progress' | 'shipped';
   href: string;
   title: string;
   summary: string;
@@ -50,60 +53,62 @@ export interface FooterMeta {
   title: string;
 }
 
-export const siteNav: NavLink[] = [
-  { label: 'Projects', href: '/projects/' },
-  { label: 'Insights', href: '/insights/' },
-  { label: 'Blog', href: '/blog/' },
-  { label: 'Roadmap', href: '/roadmap/' },
-  { label: 'Platform', href: '/platform/' },
-  { label: 'Ecosystem', href: '/ecosystem/' },
-  { label: 'About', href: '/about/' },
-];
+/** Path order matches the `nav` entries in src/i18n/ui.ts. */
+export const siteNavPaths = ['/projects/', '/insights/', '/blog/', '/roadmap/', '/platform/', '/ecosystem/', '/about/'];
 
-export const heroLeftNav: NavLink[] = [
-  { label: 'Projects', href: '/projects/' },
-  { label: 'Insights', href: '/insights/' },
-  { label: 'Platform', href: '/platform/' },
-];
+export const heroLeftPaths = ['/projects/', '/insights/', '/platform/'];
 
-export const heroRightNav: NavLink[] = [
-  { label: 'Ecosystem', href: '/ecosystem/' },
-  { label: 'Roadmap', href: '/roadmap/' },
-  { label: 'Blog', href: '/blog/' },
-  { label: 'About', href: '/about/' },
-];
+export const heroRightPaths = ['/ecosystem/', '/roadmap/', '/blog/', '/about/'];
 
-export const mobileNav: NavLink[] = [...heroLeftNav, ...heroRightNav];
+export const statValues = ['12+', '2.4K+', '8+', '100%'];
 
-export const heroContent: HeroContent = {
-  eyebrow: '创意变现',
-  subtitle: '技术驱动',
-  paragraph:
-    'CHY3 致力于构建开源创意变现基础设施，将技术创新转化为可持续的价值创造。我们开发工具、平台和方法论，帮助创作者和开发者将灵感落地为可盈利的产品。',
-  primaryCta: {
-    href: '/projects/',
-    label: '探索项目',
-  },
-  secondaryCta: {
-    href: '/platform/',
-    label: '了解平台',
-  },
-  utilityLabel: 'chy3.xyz',
-};
+export function navFor(lang: Lang, paths: string[]): NavLink[] {
+  const t = useTranslations(lang);
+  return paths.map((path, index) => ({
+    href: localizePath(path, lang),
+    label: t.nav[index] ?? path,
+  }));
+}
 
-export const stats: StatBlockProps[] = [
-  { value: '12+', label: '开源项目' },
-  { value: '2.4K+', label: 'GitHub Stars' },
-  { value: '8+', label: '活跃贡献者' },
-  { value: '100%', label: '开源共建' },
-];
+export function heroContentFor(lang: Lang): HeroContent {
+  const t = useTranslations(lang);
+  return {
+    eyebrow: t['hero.eyebrow'],
+    subtitle: t['hero.subtitle'],
+    paragraph: t['hero.paragraph'],
+    primaryCta: {
+      href: localizePath('/projects/', lang),
+      label: t['hero.primaryCta'],
+    },
+    secondaryCta: {
+      href: localizePath('/platform/', lang),
+      label: t['hero.secondaryCta'],
+    },
+    utilityLabel: t['hero.utility'],
+  };
+}
 
-export const footerMeta: FooterMeta = {
-  title: 'CHY3',
-  description:
-    '开源创意变现基础设施。构建工具、平台和方法论，帮助创作者将创意转化为可持续价值。',
-};
+export function statsFor(lang: Lang): StatBlockProps[] {
+  const t = useTranslations(lang);
+  return statValues.map((value, index) => ({
+    value,
+    label: t.stats[index],
+  }));
+}
 
-export const footerDirectory: NavLink[] = [...siteNav];
+export function footerMetaFor(lang: Lang): FooterMeta {
+  const t = useTranslations(lang);
+  return {
+    title: 'CHY3',
+    description: t['footer.description'],
+  };
+}
 
-export const footerPolicies: string[] = ['GitHub', 'Privacy', 'Terms'];
+export function footerDirectoryFor(lang: Lang): NavLink[] {
+  return navFor(lang, siteNavPaths);
+}
+
+export function footerPoliciesFor(lang: Lang): string[] {
+  const t = useTranslations(lang);
+  return [...t['footer.policies']];
+}

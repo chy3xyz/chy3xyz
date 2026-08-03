@@ -1,6 +1,8 @@
 ---
 title: "CreaSDK — 创作者工具包"
+titleEn: "CreaSDK — Creator Toolkit"
 summary: "面向独立开发者和创作者的模块化 SDK，集成支付、订阅管理、内容分发和社区运营等核心能力。"
+summaryEn: "A modular SDK for independent developers and creators, integrating payments, subscription management, content distribution, and community operations."
 status: "Beta"
 statusTone: "gold"
 icon: "box"

@@ -1,12 +1,12 @@
 ---
 import { getCollection, render } from 'astro:content';
 
-import EditorialEntryLayout from '../../layouts/EditorialEntryLayout.astro';
-import { localizePath, useTranslations, type Lang } from '../../i18n/ui';
-import { localizedField } from '../../lib/content';
-import { formatLongDate } from '../../lib/format';
+import EditorialEntryLayout from '../../../layouts/EditorialEntryLayout.astro';
+import { localizePath, useTranslations, type Lang } from '../../../i18n/ui';
+import { localizedField } from '../../../lib/content';
+import { formatLongDate } from '../../../lib/format';
 
-const lang: Lang = 'en';
+const lang: Lang = 'zh';
 const t = useTranslations(lang);
 
 export async function getStaticPaths() {

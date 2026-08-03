@@ -1,7 +1,10 @@
 ---
 title: "开源项目的商业化路径设计"
+titleEn: "Designing Commercial Paths for Open-Source Projects"
 summary: "开源不等于免费。探讨开源项目在不牺牲社区信任的前提下，通过 SaaS、托管服务、技术支持等模式实现可持续盈利。"
+summaryEn: "Open source doesn't mean free. Explore how open-source projects achieve sustainable profitability through SaaS, managed hosting, and technical support — without betraying community trust."
 category: "商业策略"
+categoryEn: "Business Strategy"
 readTime: "12 min"
 publishedAt: "2026-05-28"
 image: "/images/insight-article-01.png"

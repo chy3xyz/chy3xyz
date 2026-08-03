@@ -1,6 +1,8 @@
 ---
 title: "IdeaForge — 创意孵化引擎"
+titleEn: "IdeaForge — Idea Incubation Engine"
 summary: "从灵感到原型的全流程创意孵化工具，支持 AI 辅助构思、快速原型生成和社区协作验证。"
+summaryEn: "An end-to-end idea incubation tool from spark to prototype, with AI-assisted ideation, rapid prototype generation, and community-driven validation."
 status: "Active"
 statusTone: "green"
 icon: "zap"

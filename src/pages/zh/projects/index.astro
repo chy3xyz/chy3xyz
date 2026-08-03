@@ -1,9 +1,9 @@
 ---
-import CollectionIndexLayout from '../../layouts/CollectionIndexLayout.astro';
-import { localizePath, useTranslations, type Lang } from '../../i18n/ui';
-import { getProjectEntries, localizedField } from '../../lib/content';
+import CollectionIndexLayout from '../../../layouts/CollectionIndexLayout.astro';
+import { localizePath, useTranslations, type Lang } from '../../../i18n/ui';
+import { getProjectEntries, localizedField } from '../../../lib/content';
 
-const lang: Lang = 'en';
+const lang: Lang = 'zh';
 const t = useTranslations(lang);
 const projects = await getProjectEntries();
 
@@ -18,8 +18,8 @@ const toneStyles = {
   lang={lang}
   title="Projects | CHY3"
   eyebrow="Open Source"
-  intro="Explore the CHY3 open-source project matrix — creative tools, monetization infrastructure, and community-driven solutions."
-  description="Browse the CHY3 open-source project collection"
+  intro="探索 CHY3 开源项目矩阵，涵盖创意工具、变现基础设施和社区驱动的解决方案。"
+  description="浏览 CHY3 开源项目集合"
 >
   <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
     {projects.map((entry) => (

@@ -5,9 +5,11 @@ import { ArrowRight, Box, Code, Zap } from 'lucide-react';
 import { useRef } from 'react';
 
 import type { ProjectCardProps } from '../data/site';
+import { defaultLang, localizePath, useTranslations, type Lang } from '../i18n/ui';
 import { aeonEase, fadeUpTransition, inViewViewport } from './motion';
 
 interface ProjectsSectionProps {
+  lang?: Lang;
   projects: ProjectCardProps[];
 }
 
@@ -23,7 +25,8 @@ const toneStyles = {
   gold: 'bg-amber-500/15 text-amber-400 border-amber-500/25',
 } as const;
 
-function ProjectCard({ description, href, icon, status, statusTone, title, index }: ProjectCardProps & { index: number }) {
+function ProjectCard({ description, href, icon, status, statusTone, title, index, lang }: ProjectCardProps & { index: number; lang: Lang }) {
+  const t = useTranslations(lang);
   const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   const Icon = iconMap[icon];
@@ -51,13 +54,15 @@ function ProjectCard({ description, href, icon, status, statusTone, title, index
         href={href}
         className="mt-12 inline-flex items-center gap-3 font-display text-[11px] uppercase tracking-[0.26em] text-white/58 transition-colors duration-300 hover:text-accent-blue"
       >
-        查看项目 <ArrowRight size={14} />
+        {t['projects.viewProject']} <ArrowRight size={14} />
       </a>
     </motion.article>
   );
 }
 
-export default function ProjectsSection({ projects }: ProjectsSectionProps) {
+export default function ProjectsSection({ projects, lang = defaultLang }: ProjectsSectionProps) {
+  const t = useTranslations(lang);
+  const projectsHref = localizePath('/projects/', lang);
   return (
     <MotionConfig reducedMotion="user">
       <section id="projects" className="bg-section-dark py-20 sm:py-24">
@@ -72,23 +77,23 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
             <div>
               <div className="flex items-center gap-3 font-display text-[11px] uppercase tracking-[0.26em] text-accent-blue">
                 <Code size={16} strokeWidth={1.6} />
-                <span>开源项目</span>
+                <span>{t['projects.eyebrow']}</span>
               </div>
               <h2 className="mt-5 break-words font-display text-[2.85rem] leading-none font-bold text-white sm:text-6xl">
-                Open Source Projects
+                {t['projects.title']}
               </h2>
             </div>
             <a
-              href="/projects/"
+              href={projectsHref}
               className="group hidden items-center gap-2 font-display text-[12px] uppercase tracking-[0.24em] text-white/55 transition-colors duration-300 hover:text-white md:inline-flex"
             >
-              View All <ArrowRight className="transition-transform duration-300 group-hover:translate-x-1" size={16} />
+              {t['projects.viewAll']} <ArrowRight className="transition-transform duration-300 group-hover:translate-x-1" size={16} />
             </a>
           </motion.div>
 
           <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {projects.map((project, index) => (
-              <ProjectCard key={project.title} index={index} {...project} />
+              <ProjectCard key={project.title} lang={lang} index={index} {...project} />
             ))}
           </div>
         </div>

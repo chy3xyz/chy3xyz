@@ -1,10 +1,10 @@
 ---
-import SiteLayout from '../../layouts/SiteLayout.astro';
-import { localizePath, useTranslations, type Lang } from '../../i18n/ui';
-import { getBlogEntries, localizedField } from '../../lib/content';
-import { formatLongDate } from '../../lib/format';
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import { localizePath, useTranslations, type Lang } from '../../../i18n/ui';
+import { getBlogEntries, localizedField } from '../../../lib/content';
+import { formatLongDate } from '../../../lib/format';
 
-const lang: Lang = 'en';
+const lang: Lang = 'zh';
 const t = useTranslations(lang);
 const blogEntries = await getBlogEntries();
 const [leadStory, ...otherStories] = blogEntries;
@@ -13,14 +13,14 @@ const [leadStory, ...otherStories] = blogEntries;
 <SiteLayout
   lang={lang}
   title="Blog | CHY3"
-  description="CHY3 platform updates, creative monetization insights, and team news."
+  description="CHY3 平台更新、创意变现洞察与团队动态。"
 >
   <main class="mx-auto max-w-7xl px-6 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
     <section class="max-w-4xl">
       <p class="font-display text-[11px] uppercase tracking-[0.28em] text-accent-blue">CHY3 Blog</p>
       <h1 class="mt-5 break-words font-display text-[2.85rem] leading-none font-bold text-white sm:text-6xl lg:text-7xl">Blog</h1>
       <p class="mt-7 max-w-3xl text-lg leading-8 text-white/65 sm:text-xl">
-        Updates from the CHY3 team — insights and practices for creative monetization.
+        来自 CHY3 团队的更新、洞察与创意变现实践分享。
       </p>
     </section>
 

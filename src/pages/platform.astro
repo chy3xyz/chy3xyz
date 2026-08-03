@@ -2,18 +2,26 @@
 import { render } from 'astro:content';
 
 import SingletonPageLayout from '../layouts/SingletonPageLayout.astro';
-import { getPageEntry } from '../lib/content';
+import type { Lang } from '../i18n/ui';
+import { getPageEntry, localizedField } from '../lib/content';
 
+const lang: Lang = 'en';
 const entry = await getPageEntry('platform');
 const { Content } = await render(entry);
+
+const highlights = entry.data.highlights.map((item) => ({
+  label: localizedField(lang, item.label, item.labelEn),
+  value: localizedField(lang, item.value, item.valueEn),
+}));
 ---
 
 <SingletonPageLayout
-  title={entry.data.title}
-  eyebrow={entry.data.eyebrow}
-  summary={entry.data.summary}
+  lang={lang}
+  title={localizedField(lang, entry.data.title, entry.data.titleEn)}
+  eyebrow={localizedField(lang, entry.data.eyebrow, entry.data.eyebrowEn)}
+  summary={localizedField(lang, entry.data.summary, entry.data.summaryEn)}
   image={entry.data.image}
-  highlights={entry.data.highlights}
+  highlights={highlights}
 >
   <Content />
 </SingletonPageLayout>

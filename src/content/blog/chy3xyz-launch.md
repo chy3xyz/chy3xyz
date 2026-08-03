@@ -1,9 +1,12 @@
 ---
 title: "CHY3 正式上线：构建开源创意变现新范式"
+titleEn: "CHY3 Launches: A New Paradigm for Open-Source Creative Monetization"
 summary: "经过 6 个月的封闭开发，CHY3 平台正式对外开放。首批上线 IdeaForge 和 ValueFlow 两个核心项目，开启创意变现的新篇章。"
+summaryEn: "After six months of closed development, the CHY3 platform is now open to the public, launching IdeaForge and ValueFlow as its first two core projects."
 publishedAt: "2026-07-01"
 author: "CHY3 Team"
 desk: "平台公告"
+deskEn: "Platform Announcement"
 image: "/images/blog-article-01.png"
 ---
 

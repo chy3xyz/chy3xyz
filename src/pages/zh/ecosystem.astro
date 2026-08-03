@@ -1,12 +1,12 @@
 ---
 import { render } from 'astro:content';
 
-import SingletonPageLayout from '../layouts/SingletonPageLayout.astro';
-import type { Lang } from '../i18n/ui';
-import { getPageEntry, localizedField } from '../lib/content';
+import SingletonPageLayout from '../../layouts/SingletonPageLayout.astro';
+import type { Lang } from '../../i18n/ui';
+import { getPageEntry, localizedField } from '../../lib/content';
 
-const lang: Lang = 'en';
-const entry = await getPageEntry('about');
+const lang: Lang = 'zh';
+const entry = await getPageEntry('ecosystem');
 const { Content } = await render(entry);
 
 const highlights = entry.data.highlights.map((item) => ({

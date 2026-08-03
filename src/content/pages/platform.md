@@ -1,15 +1,24 @@
 ---
 title: "平台能力"
+titleEn: "Platform Capabilities"
 summary: "CHY3 平台围绕「创意孵化 → 价值验证 → 规模化变现」三个核心阶段构建，为创作者提供端到端的工具支持。"
+summaryEn: "The CHY3 platform is built around three core stages — idea incubation, value validation, and scaled monetization — providing creators end-to-end tooling."
 eyebrow: "产品体系"
+eyebrowEn: "Product System"
 image: "/images/singleton-about.png"
 highlights:
   - label: "核心模块"
+    labelEn: "Core Modules"
     value: "IdeaForge 创意引擎、ValueFlow 分析平台、CreaSDK 工具包、Marketplace 交易市场"
+    valueEn: "IdeaForge engine, ValueFlow analytics, CreaSDK toolkit, Marketplace"
   - label: "设计理念"
+    labelEn: "Design Philosophy"
     value: "模块化、可插拔。每个工具可独立使用，也可组合成完整工作流。"
+    valueEn: "Modular and pluggable. Every tool works standalone or composes into a complete workflow."
   - label: "技术标准"
+    labelEn: "Technical Standards"
     value: "支持 REST / GraphQL API，Webhook 事件系统，多语言 SDK"
+    valueEn: "REST / GraphQL APIs, Webhook event system, multi-language SDKs"
 ---
 
 CHY3 的平台能力围绕一个清晰的创作者旅程来设计：从发现和验证创意，到建立变现渠道，再到通过数据持续优化收益。每个阶段都有对应的工具模块提供支持，而所有这些模块通过统一的 API 层和事件系统协同工作。
