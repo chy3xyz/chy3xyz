@@ -1,0 +1,19 @@
+---
+import { render } from 'astro:content';
+
+import SingletonPageLayout from '../layouts/SingletonPageLayout.astro';
+import { getPageEntry } from '../lib/content';
+
+const entry = await getPageEntry('platform');
+const { Content } = await render(entry);
+---
+
+<SingletonPageLayout
+  title={entry.data.title}
+  eyebrow={entry.data.eyebrow}
+  summary={entry.data.summary}
+  image={entry.data.image}
+  highlights={entry.data.highlights}
+>
+  <Content />
+</SingletonPageLayout>

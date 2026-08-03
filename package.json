@@ -1,6 +1,6 @@
 {
-  "name": "aeon-space-agency-template",
-  "description": "An Astro template for a cinematic space-agency landing page with markdown content collections, responsive layouts, and light/dark themes.",
+  "name": "chy3xyz-site",
+  "description": "CHY3 creative monetization platform site — promoting open-source tools and infrastructure for turning ideas into sustainable value.",
   "type": "module",
   "version": "0.1.0",
   "license": "MIT",
@@ -19,16 +19,17 @@
     "astro": "astro"
   },
   "keywords": [
+    "chy3",
+    "creative-monetization",
+    "open-source",
     "astro",
-    "astro-template",
     "tailwindcss",
     "react",
     "framer-motion",
-    "landing-page",
-    "markdown",
-    "content-collections"
+    "landing-page"
   ],
   "dependencies": {
+    "@astrojs/check": "^0.9.10",
     "@astrojs/react": "^5.0.3",
     "@tailwindcss/vite": "^4.2.2",
     "@types/react": "^19.2.14",
@@ -39,11 +40,13 @@
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "sharp": "^0.34.5",
-    "tailwindcss": "^4.2.2"
+    "tailwindcss": "^4.2.2",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@astrojs/cloudflare": "^13.3.0",
     "@astrojs/vercel": "^10.0.6",
+    "@types/node": "^26.1.2",
     "wrangler": "^4.87.0"
   }
 }

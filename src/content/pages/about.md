@@ -1,30 +1,23 @@
 ---
-title: About AEON
-summary: AEON is a fictional government-backed deep space exploration agency built around disciplined engineering, long-range science, and the infrastructure required to keep ambitious missions alive far from Earth.
-eyebrow: Agency Profile
-image: /images/singleton-about.png
+title: "关于 CHY3"
+summary: "CHY3 是一个开源创意变现基础设施项目，致力于降低创作者和开发者将创意转化为可持续收入的门槛。我们相信开源协作是数字创意经济的最佳组织形式。"
+eyebrow: "组织概况"
+image: "/images/singleton-about.png"
 highlights:
-  - label: Mandate
-    value: Expand human reach beyond the heliosphere through sustained exploration and systems infrastructure.
-  - label: Operating Model
-    value: Publicly funded, mission-first, with long-horizon science and logistics treated as one continuous program.
-  - label: Established
-    value: '2024'
+  - label: "使命"
+    value: "构建开放、透明、可组合的创意变现工具链，让每个有价值的想法都能找到商业化的路径。"
+  - label: "运作模式"
+    value: "完全开源、社区驱动，核心技术栈以 Apache 2.0 / MIT 协议发布。"
+  - label: "成立时间"
+    value: "2026"
 ---
-AEON was founded to solve a practical problem disguised as a philosophical one: if humanity intends to travel farther, it needs institutions that can think farther. Deep space exploration is not only about singular launches or headline discoveries. It is about maintaining capability across decades, distances, and uncertain conditions.
 
-## What AEON is built to do
+CHY3 诞生于一个朴素但重要的问题：在数字创意蓬勃发展的时代，为什么将创意转化为可持续收入仍然如此困难？我们发现，问题不在于缺少创意或缺少受众，而在于缺少为创作者量身定制的、开放且可组合的基础设施。主流的变现工具要么是封闭的商业平台，要么是为大型企业设计的复杂系统——独立创作者被夹在中间，不得不在灵活性和功能完备性之间做出妥协。
 
-The agency combines mission operations, advanced systems research, launch coordination, scientific analysis, and long-duration logistics under one command structure. That model keeps discovery tied to infrastructure. It also prevents exploratory missions from becoming isolated demonstrations that cannot scale into durable programs.
+我们的答案是构建一个完全开源、社区驱动的创意变现工具链。CHY3 的核心理念是「开放即力量」：当代码公开、协议透明、社区参与时，工具的质量和安全性将超越任何闭源替代品。我们以 Apache 2.0 和 MIT 协议发布所有核心组件，确保任何个人或组织都可以自由使用、修改和分发 CHY3 的技术栈，无需担心许可风险。
 
-AEON treats every mission as part of a larger lattice. A probe, a habitat, a relay array, and a launch vehicle are all pieces of the same operating system.
+从组织模式来看，CHY3 采用分布式社区治理而非传统的公司治理结构。我们的技术决策通过公开的 RFC（Request for Comments）流程进行，任何人都可以提出提案、参与讨论和投票。核心维护者团队来自全球不同地区，通过异步协作和定期的社区会议保持同步。这种模式确保了 CHY3 的发展方向始终由最了解创作者需求的人——创作者群体本身——来驱动。
 
-## Institutional approach
+在社区文化方面，我们推崇「建设大于消费」的理念。CHY3 的每一位用户都被鼓励从第一天起就成为贡献者——无论是提交代码、改进文档、报告 bug，还是帮助其他用户解决问题。我们不追求社区规模的单纯增长，而是专注于培养深度参与的核心贡献者网络。目前，这个网络已经包括了来自超过 15 个国家的开发者。
 
-Public accountability matters to the agency's identity. AEON publishes science reports, operational summaries, and mission briefs so that each advance can be understood in context rather than reduced to spectacle. The goal is to build legitimacy through rigor and transparency.
-
-That discipline extends inward as well. Mission planning is intentionally conservative at the systems level so the agency can be ambitious at the exploration level.
-
-## Long-range view
-
-AEON's long-term work focuses on three fronts: resilient communications, autonomous science in remote environments, and the logistics needed to keep human and robotic missions moving together. The agency believes the next era of exploration belongs to organizations that can sustain presence, not just reach it once.
+展望未来，CHY3 的长期愿景是成为全球创意经济的基础设施层——就像 TCP/IP 之于互联网一样，我们希望 CHY3 的工具和协议成为创意工作者默认的基础设施选择。这条路上还有很多工作要做，但我们相信，有了开放社区的集体智慧，这个愿景是可以实现的。

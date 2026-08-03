@@ -10,7 +10,7 @@ interface Props {
   title: string;
 }
 
-const { description = 'AEON Space Agency content archive.', title } = Astro.props;
+const { description = 'CHY3 创意变现平台。', title } = Astro.props;
 const currentPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 
 function normalizePath(path: string) {
@@ -32,7 +32,7 @@ function isActivePath(path: string) {
 }
 ---
 
-<html lang="en" class="bg-page-bg">
+<html lang="zh-CN" class="bg-page-bg">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -48,7 +48,7 @@ function isActivePath(path: string) {
     />
     <script is:inline>
       (() => {
-        const key = 'aeon-theme';
+        const key = 'chy3-theme';
         const stored = window.localStorage.getItem(key);
         const theme = stored === 'light' || stored === 'dark' ? stored : 'dark';
         document.documentElement.dataset.theme = theme;

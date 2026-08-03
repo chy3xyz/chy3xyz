@@ -1,0 +1,33 @@
+---
+import { getCollection, render } from 'astro:content';
+
+import EntryLayout from '../../layouts/EntryLayout.astro';
+import { formatLongDate } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const insights = await getCollection('insights');
+  return insights.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<EntryLayout
+  title={entry.data.title}
+  eyebrow={entry.data.category}
+  summary={entry.data.summary}
+  image={entry.data.image}
+  backHref="/insights/"
+  backLabel="所有洞察"
+  details={[
+    { label: '发布', value: formatLongDate(entry.data.publishedAt) },
+    { label: '阅读时长', value: entry.data.readTime },
+    { label: '分类', value: entry.data.category },
+  ]}
+>
+  <Content />
+</EntryLayout>

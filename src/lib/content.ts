@@ -1,25 +1,18 @@
 import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
 
 import type {
-  DiscoveryContent,
-  LaunchRowProps,
-  MissionCardProps,
-  NextDepartureContent,
-  SpectrumBarProps,
+  InsightContent,
+  ProjectCardProps,
+  RoadmapItemProps,
 } from '../data/site';
-import { formatLaunchTime, formatReadingTime, formatShortDate, toUtcDateInput } from './format';
+import { formatReadingTime } from './format';
 
-export type MissionEntry = CollectionEntry<'missions'>;
-export type ReportEntry = CollectionEntry<'reports'>;
-export type DepartureEntry = CollectionEntry<'departures'>;
-export type NewsEntry = CollectionEntry<'news'>;
+export type ProjectEntry = CollectionEntry<'projects'>;
+export type InsightEntry = CollectionEntry<'insights'>;
+export type RoadmapEntry = CollectionEntry<'roadmap'>;
+export type BlogEntry = CollectionEntry<'blog'>;
 export type PageEntry = CollectionEntry<'pages'>;
-export type SingletonPageId = 'about' | 'science' | 'technology';
-
-function buildLaunchTimestamp(launchDate: Date, launchTime: string) {
-  const normalizedTime = launchTime.length === 5 ? `${launchTime}:00` : launchTime;
-  return new Date(`${toUtcDateInput(launchDate)}T${normalizedTime}Z`).getTime();
-}
+export type SingletonPageId = 'about' | 'platform' | 'ecosystem';
 
 export function estimateReadingTime(body: string) {
   const words = body.trim().split(/\s+/).filter(Boolean).length;
@@ -30,27 +23,23 @@ export function getReadingTimeLabel(body: string) {
   return formatReadingTime(estimateReadingTime(body));
 }
 
-export async function getMissionEntries() {
-  const entries = await getCollection('missions');
+export async function getProjectEntries() {
+  const entries = await getCollection('projects');
   return entries.sort((left, right) => left.data.order - right.data.order);
 }
 
-export async function getReportEntries() {
-  const entries = await getCollection('reports');
+export async function getInsightEntries() {
+  const entries = await getCollection('insights');
   return entries.sort((left, right) => right.data.publishedAt.getTime() - left.data.publishedAt.getTime());
 }
 
-export async function getDepartureEntries() {
-  const entries = await getCollection('departures');
-  return entries.sort(
-    (left, right) =>
-      buildLaunchTimestamp(left.data.launchDate, left.data.launchTime) -
-      buildLaunchTimestamp(right.data.launchDate, right.data.launchTime),
-  );
+export async function getRoadmapEntries() {
+  const entries = await getCollection('roadmap');
+  return entries.sort((left, right) => left.data.order - right.data.order);
 }
 
-export async function getNewsEntries() {
-  const entries = await getCollection('news');
+export async function getBlogEntries() {
+  const entries = await getCollection('blog');
   return entries.sort((left, right) => right.data.publishedAt.getTime() - left.data.publishedAt.getTime());
 }
 
@@ -62,55 +51,45 @@ export async function getPageEntry(id: SingletonPageId) {
   return entry;
 }
 
-export function toMissionCard(entry: MissionEntry): MissionCardProps {
+export function toProjectCard(entry: ProjectEntry): ProjectCardProps {
   return {
     title: entry.data.title,
     description: entry.data.summary,
     status: entry.data.status,
     statusTone: entry.data.statusTone,
     icon: entry.data.icon,
-    href: `/missions/${entry.id}/`,
+    href: `/projects/${entry.id}/`,
   };
 }
 
-export function toDiscoveryContent(entry: ReportEntry): DiscoveryContent {
+export function toInsightContent(entry: InsightEntry): InsightContent {
   return {
-    label: entry.data.label,
+    label: entry.data.category,
     title: entry.data.title,
     body: entry.data.summary,
+    readTime: entry.data.readTime,
     cta: {
-      href: `/reports/${entry.id}/`,
-      label: 'Read Report',
+      href: `/insights/${entry.id}/`,
+      label: '阅读全文',
     },
-    archiveHref: '/reports/',
-    archiveLabel: 'View All Reports',
+    archiveHref: '/insights/',
+    archiveLabel: '查看全部洞察',
     image: entry.data.image,
-    rangeStart: entry.data.rangeStart,
-    rangeEnd: entry.data.rangeEnd,
   };
 }
 
-export function toSpectrumBars(entry: ReportEntry): SpectrumBarProps[] {
-  return entry.data.spectrumBars.map((value) => ({ value }));
-}
-
-export function toNextDepartureContent(entry: DepartureEntry): NextDepartureContent {
-  return {
-    title: 'Next Departure',
-    label: 'T-Minus',
-    launchDate: toUtcDateInput(entry.data.launchDate),
-    launchTime: entry.data.launchTime,
-    image: entry.data.image,
-    allHref: '/departures/',
+export function toRoadmapItem(entry: RoadmapEntry): RoadmapItemProps {
+  const statusLabels: Record<string, string> = {
+    planned: '计划中',
+    'in-progress': '开发中',
+    shipped: '已发布',
   };
-}
 
-export function toLaunchRow(entry: DepartureEntry): LaunchRowProps {
   return {
-    date: formatShortDate(entry.data.launchDate),
-    time: formatLaunchTime(entry.data.launchTime),
+    quarter: entry.data.quarter,
+    status: statusLabels[entry.data.status] ?? entry.data.status,
     title: entry.data.title,
-    detail: entry.data.detail,
-    href: `/departures/${entry.id}/`,
+    summary: entry.data.summary,
+    href: `/roadmap/${entry.id}/`,
   };
 }

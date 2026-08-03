@@ -46,18 +46,21 @@ export default function FooterSection({ directory, meta, policies }: FooterSecti
             </div>
 
             <div>
-              <h3 className="font-display text-[11px] uppercase tracking-[0.26em] text-white/80">Coordinates</h3>
+              <h3 className="font-display text-[11px] uppercase tracking-[0.26em] text-white/80">Connect</h3>
               <div className="mt-6 space-y-3 text-[1.1rem] text-white/60">
-                <p>Launch Complex 39A</p>
-                <p>Cape Canaveral, FL</p>
-                <p>Earth, Sol System</p>
-                <p className="text-accent-blue">28.6082° N, 80.6041° W</p>
+                <p>
+                  <a href="https://github.com/chy3xyz" className="transition-colors duration-300 hover:text-accent-blue">github.com/chy3xyz</a>
+                </p>
+                <p>
+                  <a href="https://chy3.xyz" className="transition-colors duration-300 hover:text-accent-blue">chy3.xyz</a>
+                </p>
+                <p>开源社区 · 全球协作</p>
               </div>
             </div>
           </div>
 
           <div className="mt-16 flex flex-col gap-6 border-t border-white/8 pt-8 text-[0.95rem] uppercase tracking-[0.08em] text-white/42 md:flex-row md:items-center md:justify-between">
-            <p>© 2026 AEON SPACE AGENCY. ALL RIGHTS RESERVED.</p>
+            <p>© 2026 CHY3. ALL RIGHTS RESERVED.</p>
             <div className="flex flex-wrap gap-6">
               {policies.map((policy) => (
                 <span key={policy}>{policy}</span>

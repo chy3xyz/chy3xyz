@@ -18,6 +18,7 @@ const adapter =
       : undefined;
 
 export default defineConfig({
+  site: 'https://chy3.xyz',
   ...(adapter ? { adapter } : {}),
   integrations: [react()],
   vite: {

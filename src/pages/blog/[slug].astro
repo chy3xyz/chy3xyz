@@ -1,0 +1,33 @@
+---
+import { getCollection, render } from 'astro:content';
+
+import EditorialEntryLayout from '../../layouts/EditorialEntryLayout.astro';
+import { formatLongDate } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<EditorialEntryLayout
+  title={entry.data.title}
+  eyebrow={entry.data.desk}
+  summary={entry.data.summary}
+  image={entry.data.image}
+  backHref="/blog/"
+  backLabel="所有文章"
+  details={[
+    { label: '发布', value: formatLongDate(entry.data.publishedAt) },
+    { label: '作者', value: entry.data.author },
+    { label: '栏目', value: entry.data.desk },
+  ]}
+>
+  <Content />
+</EditorialEntryLayout>

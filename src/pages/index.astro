@@ -1,10 +1,10 @@
 ---
-import DepartureSection from '../components/DepartureSection';
-import DiscoverySection from '../components/DiscoverySection';
 import FooterSection from '../components/FooterSection';
 import HeroShell from '../components/HeroShell';
-import MissionsSection from '../components/MissionsSection';
+import ProjectsSection from '../components/ProjectsSection';
 import StatsSection from '../components/StatsSection';
+import RoadmapSection from '../components/RoadmapSection';
+import InsightSection from '../components/InsightSection';
 import {
   footerDirectory,
   footerMeta,
@@ -16,28 +16,25 @@ import {
   stats,
 } from '../data/site';
 import {
-  getDepartureEntries,
-  getMissionEntries,
-  getReportEntries,
-  toDiscoveryContent,
-  toLaunchRow,
-  toMissionCard,
-  toNextDepartureContent,
-  toSpectrumBars,
+  getProjectEntries,
+  getInsightEntries,
+  getRoadmapEntries,
+  toProjectCard,
+  toInsightContent,
+  toRoadmapItem,
 } from '../lib/content';
 import '../styles/global.css';
 
-const [missionEntries, reportEntries, departureEntries] = await Promise.all([
-  getMissionEntries(),
-  getReportEntries(),
-  getDepartureEntries(),
+const [projectEntries, insightEntries, roadmapEntries] = await Promise.all([
+  getProjectEntries(),
+  getInsightEntries(),
+  getRoadmapEntries(),
 ]);
 
-const featuredReport = reportEntries[0];
-const featuredDeparture = departureEntries[0];
+const featuredInsight = insightEntries[0];
 ---
 
-<html lang="en" class="bg-page-bg">
+<html lang="zh-CN" class="bg-page-bg">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -46,7 +43,7 @@ const featuredDeparture = departureEntries[0];
     <meta name="generator" content={Astro.generator} />
     <meta
       name="description"
-      content="AEON Space Agency is a fictional government-backed deep space exploration agency focused on missions, discovery, and next-generation science."
+      content="CHY3 开源创意变现基础设施 — 构建工具、平台和方法论，帮助创作者将创意转化为可持续价值。"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -56,14 +53,14 @@ const featuredDeparture = departureEntries[0];
     />
     <script is:inline>
       (() => {
-        const key = 'aeon-theme';
+        const key = 'chy3-theme';
         const stored = window.localStorage.getItem(key);
         const theme = stored === 'light' || stored === 'dark' ? stored : 'dark';
         document.documentElement.dataset.theme = theme;
         document.documentElement.classList.toggle('dark', theme === 'dark');
       })();
     </script>
-    <title>AEON Space Agency</title>
+    <title>CHY3 — 创意变现基础设施</title>
   </head>
   <body class="bg-page-bg font-body text-white antialiased">
     <main class="site-shell overflow-x-clip">
@@ -74,22 +71,18 @@ const featuredDeparture = departureEntries[0];
         mobileNav={mobileNav}
         rightNav={heroRightNav}
       />
-      <MissionsSection client:visible missions={missionEntries.map(toMissionCard)} />
-      {featuredReport ? (
-        <DiscoverySection
+      <ProjectsSection client:visible projects={projectEntries.map(toProjectCard)} />
+      {featuredInsight ? (
+        <InsightSection
           client:visible
-          bars={toSpectrumBars(featuredReport)}
-          content={toDiscoveryContent(featuredReport)}
+          content={toInsightContent(featuredInsight)}
         />
       ) : null}
       <StatsSection client:visible stats={stats} />
-      {featuredDeparture ? (
-        <DepartureSection
-          client:visible
-          content={toNextDepartureContent(featuredDeparture)}
-          launches={departureEntries.map(toLaunchRow)}
-        />
-      ) : null}
+      <RoadmapSection
+        client:visible
+        items={roadmapEntries.map(toRoadmapItem)}
+      />
       <FooterSection
         client:visible
         directory={footerDirectory}

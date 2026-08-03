@@ -2,60 +2,55 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
-const missions = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/missions' }),
+const projects = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
   schema: z.object({
     title: z.string(),
     summary: z.string(),
     status: z.string(),
     statusTone: z.enum(['green', 'blue', 'gold']),
-    icon: z.enum(['satellite', 'rocket', 'star']),
+    icon: z.enum(['box', 'code', 'zap']),
     order: z.number(),
-    vehicle: z.string(),
-    missionWindow: z.string(),
-    destination: z.string(),
-    coverImage: z.string().default('/images/mission-article-01.png'),
+    repo: z.string(),
+    language: z.string(),
+    stars: z.string(),
+    coverImage: z.string().default('/images/project-article-01.png'),
   }),
 });
 
-const reports = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/reports' }),
+const insights = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/insights' }),
   schema: z.object({
     title: z.string(),
     summary: z.string(),
-    label: z.string(),
+    category: z.string(),
+    readTime: z.string(),
     publishedAt: z.coerce.date(),
-    image: z.string().default('/images/report-article-01.png'),
-    spectrumBars: z.array(z.number().int().min(0).max(100)).length(12),
-    rangeStart: z.string(),
-    rangeEnd: z.string(),
-    highlight: z.string(),
+    image: z.string().default('/images/insight-article-01.png'),
   }),
 });
 
-const departures = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/departures' }),
+const roadmap = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/roadmap' }),
   schema: z.object({
     title: z.string(),
-    detail: z.string(),
-    launchDate: z.coerce.date(),
-    launchTime: z.string().regex(/^([01]\d|2[0-3]):[0-5]\d(?::[0-5]\d)?$/),
-    image: z.string().default('/images/departures-article-01.png'),
-    launchSite: z.string(),
-    missionWindow: z.string(),
+    summary: z.string(),
+    status: z.enum(['planned', 'in-progress', 'shipped']),
+    quarter: z.string(),
+    image: z.string().default('/images/roadmap-article-01.png'),
     order: z.number(),
   }),
 });
 
-const news = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/news' }),
+const blog = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
   schema: z.object({
     title: z.string(),
     summary: z.string(),
     publishedAt: z.coerce.date(),
     author: z.string(),
     desk: z.string(),
-    image: z.string().default('/images/news-article-01.png'),
+    image: z.string().default('/images/blog-article-01.png'),
   }),
 });
 
@@ -76,9 +71,9 @@ const pages = defineCollection({
 });
 
 export const collections = {
-  missions,
-  reports,
-  departures,
-  news,
+  projects,
+  insights,
+  roadmap,
+  blog,
   pages,
 };

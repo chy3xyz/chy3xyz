@@ -1,0 +1,39 @@
+---
+import CollectionIndexLayout from '../../layouts/CollectionIndexLayout.astro';
+import { formatLongDate } from '../../lib/format';
+import { getInsightEntries } from '../../lib/content';
+
+const insights = await getInsightEntries();
+---
+
+<CollectionIndexLayout
+  title="Insights | CHY3"
+  eyebrow="Collection Archive"
+  intro="创意变现领域的前沿洞察与案例分析，涵盖平台策略、创作者经济和开源商业化实践。"
+  description="浏览 CHY3 创意变现洞察与案例研究"
+>
+  <div class="grid gap-6 lg:grid-cols-2">
+    {insights.map((insight) => (
+      <a
+        href={`/insights/${insight.id}/`}
+        class="group grid overflow-hidden border border-white/10 bg-white/3 transition-colors duration-300 hover:border-accent-blue/50 md:grid-cols-[220px_minmax(0,1fr)]"
+      >
+        <img src={insight.data.image} alt={insight.data.title} class="aspect-[4/3] h-full w-full object-cover md:aspect-auto" />
+        <div class="p-7 sm:p-8">
+          <div class="flex flex-wrap items-center gap-3 text-sm text-white/48">
+            <span class="font-display text-[10px] uppercase tracking-[0.24em] text-warm-gold">{insight.data.category}</span>
+            <span>•</span>
+            <span>{formatLongDate(insight.data.publishedAt)}</span>
+            <span>•</span>
+            <span>{insight.data.readTime}</span>
+          </div>
+          <h2 class="mt-5 break-words font-display text-[2rem] leading-none text-white">{insight.data.title}</h2>
+          <p class="mt-5 text-[1.02rem] leading-8 text-white/68">{insight.data.summary}</p>
+          <span class="mt-8 inline-flex items-center gap-3 font-display text-[11px] uppercase tracking-[0.24em] text-white/55 transition-colors duration-300 group-hover:text-accent-blue">
+            阅读洞察 <span aria-hidden="true">→</span>
+          </span>
+        </div>
+      </a>
+    ))}
+  </div>
+</CollectionIndexLayout>

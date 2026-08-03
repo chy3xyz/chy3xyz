@@ -1,0 +1,47 @@
+---
+import CollectionIndexLayout from '../../layouts/CollectionIndexLayout.astro';
+import { getRoadmapEntries } from '../../lib/content';
+
+const roadmapEntries = await getRoadmapEntries();
+---
+
+<CollectionIndexLayout
+  title="Roadmap | CHY3"
+  eyebrow="Platform Roadmap"
+  intro="CHY3 平台功能路线图，追踪各项能力的开发进度与季度规划。"
+  description="浏览 CHY3 平台功能路线图"
+>
+  <div class="grid gap-6 lg:grid-cols-2">
+    {roadmapEntries.map((item) => (
+      <a
+        href={`/roadmap/${item.id}/`}
+        class="group overflow-hidden border border-white/10 bg-white/3 transition-colors duration-300 hover:border-accent-blue/50"
+      >
+        <div class="p-7 sm:p-8">
+          <div class="flex flex-wrap items-center gap-3 text-sm text-white/48">
+            <span class="font-display text-[10px] uppercase tracking-[0.24em] text-warm-gold">{item.data.quarter}</span>
+            <span>•</span>
+            <span class={`rounded-full px-3 py-0.5 font-display text-[10px] uppercase tracking-[0.22em] ${item.data.status === 'shipped' ? 'bg-emerald-400/10 text-emerald-300' : item.data.status === 'in-progress' ? 'bg-accent-blue/14 text-accent-blue' : 'bg-white/10 text-white/50'}`}>
+              {item.data.status}
+            </span>
+          </div>
+          <h2 class="mt-5 break-words font-display text-[2rem] leading-none text-white">{item.data.title}</h2>
+          <p class="mt-4 text-[1.02rem] text-white/72">{item.data.summary}</p>
+          <dl class="mt-8 grid gap-4 text-sm text-white/54">
+            <div>
+              <dt class="font-display text-[10px] uppercase tracking-[0.22em] text-accent-blue">Quarter</dt>
+              <dd class="mt-2 leading-6">{item.data.quarter}</dd>
+            </div>
+            <div>
+              <dt class="font-display text-[10px] uppercase tracking-[0.22em] text-accent-blue">Order</dt>
+              <dd class="mt-2 leading-6">{item.data.order}</dd>
+            </div>
+          </dl>
+          <span class="mt-8 inline-flex items-center gap-3 font-display text-[11px] uppercase tracking-[0.24em] text-white/55 transition-colors duration-300 group-hover:text-accent-blue">
+            查看详情 <span aria-hidden="true">→</span>
+          </span>
+        </div>
+      </a>
+    ))}
+  </div>
+</CollectionIndexLayout>

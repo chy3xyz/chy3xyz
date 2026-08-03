@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "aeon-space-agency",
+  "name": "chy3xyz",
   "main": "@astrojs/cloudflare/entrypoints/server",
   "compatibility_date": "2026-05-02",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],

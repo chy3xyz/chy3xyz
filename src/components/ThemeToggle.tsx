@@ -1,7 +1,7 @@
 import { Moon, Sun } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-const THEME_KEY = 'aeon-theme';
+const THEME_KEY = 'chy3-theme';
 
 type ThemeMode = 'dark' | 'light';
 type ThemeToggleVariant = 'hero' | 'shell';

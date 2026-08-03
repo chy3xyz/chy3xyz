@@ -1,0 +1,31 @@
+---
+import { getCollection, render } from 'astro:content';
+
+import EntryLayout from '../../layouts/EntryLayout.astro';
+
+export async function getStaticPaths() {
+  const roadmapEntries = await getCollection('roadmap');
+  return roadmapEntries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<EntryLayout
+  title={entry.data.title}
+  eyebrow="Roadmap Item"
+  summary={entry.data.summary}
+  backHref="/roadmap/"
+  backLabel="所有路线图"
+  details={[
+    { label: '状态', value: entry.data.status },
+    { label: '季度', value: entry.data.quarter },
+    { label: '排序', value: String(entry.data.order) },
+  ]}
+>
+  <Content />
+</EntryLayout>

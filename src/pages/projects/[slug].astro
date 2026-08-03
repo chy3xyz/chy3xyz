@@ -1,0 +1,33 @@
+---
+import { getCollection, render } from 'astro:content';
+
+import EntryLayout from '../../layouts/EntryLayout.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<EntryLayout
+  title={entry.data.title}
+  eyebrow="Project"
+  summary={entry.data.summary}
+  image={entry.data.coverImage}
+  backHref="/projects/"
+  backLabel="所有项目"
+  details={[
+    { label: '状态', value: entry.data.status },
+    { label: '仓库', value: entry.data.repo },
+    { label: '语言', value: entry.data.language },
+    { label: 'Stars', value: String(entry.data.stars) },
+  ]}
+>
+  <Content />
+</EntryLayout>
