@@ -2,7 +2,7 @@
 
 <div align="center">
 
-**开源创意变现基础设施**
+**CHY3**
 
 A cinematic, content-driven creative monetization platform site built with **Astro 6**, **React 19**, **Tailwind CSS 4**, and **Framer Motion**. Designed for showcasing open-source projects, insights, and platform capabilities.
 
