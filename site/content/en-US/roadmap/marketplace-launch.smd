@@ -1,0 +1,33 @@
+---
+.title = "Creator Marketplace Launch",
+.date = .date("2026-12-31T00:00:00"),
+.layout = "article.shtml",
+.description = "A marketplace for independent creators — open-source crowdfunding, digital product distribution, and collaboration matching.",
+.translation_key = "roadmap-marketplace",
+.custom = .{
+  .quarter = "2026 Q4",
+  .kind = "roadmap",
+  .kicker = "Roadmap / 2026 Q4",
+  .status = "Planned",
+  .status_tone = "next",
+  .facts = [
+      .{ .label = "Quarter", .value = "2026 Q4" },
+      .{ .label = "Status", .value = "Planned" },
+      .{ .label = "Scope", .value = "Marketplace MVP" }
+    ],
+},
+---
+
+With the core platform stable, the next layer is exchange: a marketplace that connects the people who make creative tools with the people who need them.
+
+# Three ways to transact
+
+Creator crowdfunding lets a community fund a project directly. Digital product distribution handles templates, plugins, courses, and technical documents with one-click licensing. Collaboration matching pairs complementary creators around a project brief, for a sprint or a longer partnership.
+
+# Built on CreaSDK
+
+The marketplace uses CreaSDK's payment and distribution modules, so licensing and settlement follow the same primitives as the rest of the platform. We are also exploring smart-contract revenue splits for multi-author projects, with transparent attribution and automatic payouts.
+
+# The MVP
+
+The first version opens to 50 creators from the core community in Q4. The goal is not catalogue size. It is to prove that a small, trusted market can settle payments and disputes better than a general-purpose platform.

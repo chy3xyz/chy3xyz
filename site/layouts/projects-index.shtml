@@ -1,0 +1,63 @@
+<extend template="base.shtml">
+<head id="head">
+</head>
+<main id="main">
+  <section class="collection-head">
+    <div class="container">
+      <p class="kicker"><span class="kicker-dot"></span><span :text="$i18n.get('projects_kicker')"></span></p>
+      <div class="collection-title-row">
+        <h1 class="display-1" :text="$i18n.get('projects_title')"></h1>
+        <div class="collection-count">
+          <span class="collection-count-num" :text="$page.subpages().len"></span>
+          <span class="collection-count-label" :text="$i18n.get('projects_count')"></span>
+        </div>
+      </div>
+      <p class="collection-lede" :text="$i18n.get('projects_lede')"></p>
+    </div>
+  </section>
+
+  <section class="section collection-body">
+    <div class="container">
+      <div class="project-grid">
+        <ctx :if="$page.subpages().first?()">
+            <a class="project-card project-card-lead" href="$if.link()">
+              <div class="card-visual" aria-hidden="true">
+                <span class="card-orbit card-orbit-1"></span>
+                <span class="card-orbit card-orbit-2"></span>
+                <span class="card-orbit card-orbit-3"></span>
+                <span class="card-index" :text="$if.custom.get('index')"></span>
+              </div>
+              <div class="card-body">
+                <div class="card-top">
+                  <span class="status" data-tone="$if.custom.get('status_tone')"><i></i><span :text="$if.custom.get('status')"></span></span>
+                  <span class="card-lang" :text="$if.custom.get('language')"></span>
+                </div>
+                <h2 :text="$if.title"></h2>
+                <p :text="$if.description"></p>
+                <div class="card-foot">
+                  <span class="card-repo" :text="$if.custom.get('repo')"></span>
+                  <span class="card-arrow">↗</span>
+                </div>
+              </div>
+            </a>
+        </ctx>
+        <ctx :loop="$page.subpages().slice(1)">
+          <a class="project-card" href="$loop.it.link()">
+            <ctx project="$loop.it">
+            <div class="card-top">
+              <span class="card-index-sm" :text="$ctx.project.custom.get('index')"></span>
+              <span class="status" data-tone="$ctx.project.custom.get('status_tone')"><i></i><span :text="$ctx.project.custom.get('status')"></span></span>
+            </div>
+            <h2 :text="$ctx.project.title"></h2>
+            <p :text="$ctx.project.description"></p>
+            <div class="card-foot">
+              <span class="card-meta"><span :text="$ctx.project.custom.get('language')"></span><span class="card-meta-dot"></span><span>★ <span :text="$ctx.project.custom.get('stars')"></span></span></span>
+              <span class="card-arrow">↗</span>
+            </div>
+          </ctx>
+          </a>
+        </ctx>
+      </div>
+    </div>
+  </section>
+</main>

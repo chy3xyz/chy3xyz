@@ -1,0 +1,9 @@
+---
+.title = "CHY3 — Open-source creative monetization infrastructure",
+.date = .date("2026-07-01T00:00:00"),
+.layout = "index.shtml",
+.description = "CHY3 builds open-source tools and protocols that turn creative work into durable revenue — from idea incubation to monetization analytics.",
+.translation_key = "home",
+---
+
+CHY3 is an open-source network for creative monetization: tools that help independent creators and developers take an idea from first spark to recurring revenue.

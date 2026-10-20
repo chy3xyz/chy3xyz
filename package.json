@@ -1,52 +1,24 @@
 {
   "name": "chy3xyz-site",
-  "description": "CHY3 creative monetization platform site — promoting open-source tools and infrastructure for turning ideas into sustainable value.",
+  "version": "0.2.0",
+  "private": true,
   "type": "module",
-  "version": "0.1.0",
-  "license": "MIT",
-  "engines": {
-    "node": ">=22.12.0"
-  },
+  "description": "CHY3 — open-source creative monetization infrastructure. Bilingual site built with zdoc.",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "build:vercel": "ASTRO_DEPLOY_TARGET=vercel astro build",
-    "build:cloudflare": "ASTRO_DEPLOY_TARGET=cloudflare astro build",
-    "preview": "astro preview",
-    "preview:cloudflare": "npm run build:cloudflare && wrangler dev",
-    "deploy:cloudflare": "npm run build:cloudflare && wrangler deploy",
-    "check": "astro check",
-    "astro": "astro"
+    "dev": "node scripts/zdoc.mjs --dev",
+    "build": "node scripts/zdoc.mjs",
+    "preview": "node scripts/serve.mjs"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "keywords": [
     "chy3",
     "creative-monetization",
     "open-source",
-    "astro",
-    "tailwindcss",
-    "react",
-    "framer-motion",
-    "landing-page"
+    "zdoc",
+    "zig",
+    "static-site"
   ],
-  "dependencies": {
-    "@astrojs/check": "^0.9.10",
-    "@astrojs/react": "^5.0.3",
-    "@tailwindcss/vite": "^4.2.2",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "astro": "^6.1.6",
-    "framer-motion": "^12.38.0",
-    "lucide-react": "^1.8.0",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5",
-    "sharp": "^0.34.5",
-    "tailwindcss": "^4.2.2",
-    "typescript": "^5.9.3"
-  },
-  "devDependencies": {
-    "@astrojs/cloudflare": "^13.3.0",
-    "@astrojs/vercel": "^10.0.6",
-    "@types/node": "^26.1.2",
-    "wrangler": "^4.87.0"
-  }
+  "license": "MIT"
 }

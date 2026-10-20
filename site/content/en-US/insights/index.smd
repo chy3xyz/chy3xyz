@@ -1,0 +1,9 @@
+---
+.title = "Insights",
+.date = .date("2026-07-01T00:00:00"),
+.layout = "insights-index.shtml",
+.description = "Essays on the economics, architecture, and craft of independent creative work.",
+.translation_key = "insights-index",
+---
+
+Notes on making creative work pay, published as the thinking develops.

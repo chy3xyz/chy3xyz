@@ -1,0 +1,9 @@
+---
+.title = "博客",
+.date = .date("2026-07-01T00:00:00"),
+.layout = "blog-index.shtml",
+.description = "来自 CHY3 项目的发布、决策与社区里程碑。",
+.translation_key = "blog-index",
+---
+
+来自公开构建的笔记，新的在前。

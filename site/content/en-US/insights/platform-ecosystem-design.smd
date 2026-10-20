@@ -1,0 +1,36 @@
+---
+.title = "Technical Architecture for Creative Monetization",
+.date = .date("2026-04-10T00:00:00"),
+.layout = "article.shtml",
+.description = "What technical foundation does a multi-tenant, multi-category creative monetization platform need? Service boundaries, event pipelines, and payments as an anti-corruption layer.",
+.translation_key = "insight-architecture",
+.custom = .{
+  .category = "Technical architecture",
+  .read_time = "10 min read",
+  .kind = "insight",
+  .kicker = "Insight / Architecture",
+  .facts = [
+      .{ .label = "Published", .value = "10 April 2026" },
+      .{ .label = "Read time", .value = "10 min read" },
+      .{ .label = "Filed under", .value = "Technical architecture" }
+    ],
+},
+---
+
+A multi-tenant, multi-category creative monetization platform is complicated in the product and non-trivial in the architecture. After taking CHY3 from zero to one, we want to share three decisions that mattered: service boundaries, the data pipeline, and payment integration.
+
+# Draw boundaries by domain
+
+The most consequential choice is where to cut the services. Our rule is to cut by business domain, not by technical layer. Creative management, payments and settlement, analytics, and identity are four bounded contexts, each with its own storage and domain model. This avoids distributed transactions early, while letting each context evolve independently. Communication is mostly asynchronous through a message queue, with synchronous gRPC only on the critical path.
+
+# A pipeline of events
+
+Creative monetization produces wildly heterogeneous data: payment callbacks, product analytics, content consumption logs, and third-party APIs. We built a streaming pipeline around change data capture and Kafka, and normalized every business event into a CloudEvents envelope. Downstream systems — analytics, alerting, recommendations — subscribe to event types instead of querying upstream databases.
+
+# Payments as an anti-corruption layer
+
+Payments are the part closest to the money, and the part least allowed to fail. Our design treats each payment provider as an external anti-corruption layer. The platform exposes one value-transfer abstraction; subscription management, revenue calculation, and settlement never see provider-specific details. Idempotency keys and compensating transactions protect the ledger when a callback is retried or a provider times out. The same boundary leaves room for regional compliance and tax calculation later.
+
+# The lesson
+
+Architecture is a series of constraints chosen on purpose. The goal is not to be ready for every future; it is to make the next change cheap.

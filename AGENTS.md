@@ -1,41 +1,52 @@
 # CHY3 — chy3xyz site
 
-Bilingual (en/zh) marketing site for the CHY3 open-source creative-monetization platform (chy3.xyz). Content-driven, cinematic space theme. Default language is English.
+Bilingual (en/zh) marketing site for the CHY3 open-source creative-monetization platform (chy3.xyz). Content-driven, cinematic dark editorial theme. Default language is English.
 
 ## Project
-- Stack: Astro 6 (static-first, `src/pages` routes), React 19 islands, Tailwind CSS 4 via `@tailwindcss/vite`, Framer Motion 12, lucide-react icons, TypeScript strict (`astro/tsconfigs/strict`), Node >= 22.12.
-- Bilingual via Astro i18n routing: English lives at root paths (`/`, `/projects/`), Chinese under `/zh/` (`/zh/`, `/zh/projects/`). Language switcher in header/hero maps current path via `switchLangHref`.
-- Entry: `src/pages/index.astro` (en) + `src/pages/zh/index.astro` (zh); global styles `src/styles/global.css`.
-- Deploys: static build by default; Vercel or Cloudflare Workers via `ASTRO_DEPLOY_TARGET` env (see `astro.config.mjs`, `wrangler.jsonc`).
+
+- **Stack:** zdoc 0.16.2 (Zig static-site generator, a Zine fork), SuperMD content, SuperHTML layouts, hand-written CSS/JS. No Astro, no Tailwind, no React, no bundler.
+- **Bilingual:** English at root paths (`/`, `/projects/`), Chinese under `/zh/`. zdoc multilingual site config + `translation_key` page matching; language switcher uses `$page.locales()`.
+- **Source root:** `site/`. Build output: `dist/`.
+- **Entry config:** `site/zine.ziggy` (locales, content dirs, assets, static assets, `supermd.headings_h2 = true`).
+- **Layouts:** `site/layouts/templates/base.shtml` plus page layouts `index`, `projects-index`, `insights-index`, `blog-index`, `roadmap-index`, `article`, `page`.
+- **Assets:** `site/assets/style.css` (design system), `site/assets/app.js`, self-hosted fonts, `favicon.svg`, `og.jpg`, `hero-galaxy.jpg`, `CNAME` (published to `dist/CNAME`, custom domain `chy3.xyz`).
+- **Scripts:** `scripts/zdoc.mjs` resolves a local `zdoc` / `ZDOC_BIN` or downloads v0.16.2 to `.cache/zdoc/`; runs `zdoc release` from `site/`. `scripts/serve.mjs` serves `dist/` with no dependencies.
+- **Deploy:** `.github/workflows/pages.yml` builds `dist/` and deploys to GitHub Pages on pushes to `main`. Pages source is GitHub Actions, custom domain `chy3.xyz`; `site/assets/CNAME` is a static asset so it lands at `dist/CNAME`.
 
 ## Commands
-- `npm run dev` — dev server at localhost:4321
-- `npm run build` — static build to `./dist/`
-- `npm run build:vercel` / `npm run build:cloudflare` — adapter builds
-- `npm run preview` / `npm run preview:cloudflare` — preview builds
-- `npm run deploy:cloudflare` — build + `wrangler deploy`
-- `npm run check` — `astro check` (type-check; there is no test suite)
+
+- `npm run build` — clean `dist/` and build the site
+- `npm run preview` — serve `dist/` at http://localhost:4321
+- `npm run dev` — zdoc dev server at http://localhost:1990
+- `ZDOC_BIN=/path/to/zdoc npm run build` — use an existing binary
 
 ## Architecture
-- `src/pages/` — routes, duplicated per locale: en at root, zh under `zh/`. `index`, `/projects/`, `/insights/`, `/blog/`, `/roadmap/`, singleton `/platform/`, `/ecosystem/`, `/about/`; `[slug].astro` detail pages use `getStaticPaths` from collections.
-- `src/i18n/ui.ts` — single source of truth for UI copy (`ui.en` / `ui.zh`), `useTranslations`, `localizePath`, `switchLangHref`. Both locale dicts must keep identical keys.
-- `src/components/` — React islands, hydrated with `client:load` (hero) or `client:visible` (sections). Components with UI copy take a `lang` prop. `motion.ts` holds shared Framer Motion constants.
-- `src/content/` — Astro Content Collections (markdown): `projects`, `insights`, `roadmap`, `blog`, `pages`; schemas in `src/content.config.ts` (strict zod).
-- `src/data/site.ts` — nav path structure + `xxxFor(lang)` factories that assemble per-locale props from the i18n dict.
-- `src/lib/` — `content.ts` fetches/sorts/maps collection entries to component props (locale-aware via `localizedField`); `format.ts` UTC date & reading-time formatters.
-- `src/layouts/` — `SiteLayout` (html/lang/header/lang-switcher), `CollectionIndexLayout`, `EntryLayout`, `EditorialEntryLayout`, `SingletonPageLayout` — all accept a `lang` prop.
+
+- `site/content/en-US/` and `site/content/zh-CN/` mirror each other. Each page is one `.smd` file; the path becomes the URL.
+- Home: `index.smd` with `layout = "index.shtml"`. Collections: `projects/index.smd` etc. with collection layouts. Entries: `layout = "article.shtml"`. Singletons: `platform.smd`, `ecosystem.smd`, `about.smd` with `page.shtml`.
+- `custom` frontmatter carries design data: `kind`, `kicker`, `status`, `status_tone`, `repo`, `repo_url`, `language`, `stars`, `category`, `read_time`, `desk`, `author`, `quarter`, `eyebrow`, `highlights`, `facts`.
+- UI copy is in `site/i18n/{en-US,zh-CN}.ziggy`, read as `$i18n.get('key')`.
 
 ## Conventions
-- **Bilingual, default en.** English at root paths, Chinese under `/zh/`. Never hardcode UI copy in pages/components — add a key to both dicts in `src/i18n/ui.ts` and read via `useTranslations(lang)`.
-- Content entries are single files (Chinese body); bilingual via `titleEn`/`summaryEn` (and `categoryEn`/`deskEn`/`eyebrowEn`/`labelEn`/`valueEn` for pages) frontmatter fields. English site shows `*En` when present, falling back to Chinese via `localizedField(lang, zh, en)` in `src/lib/content.ts`.
-- When duplicating a page for `zh/`, copy the en page and set `const lang: Lang = 'zh'` — keep structure identical, translate only page-level intro/description.
-- All internal hrefs in components/pages must go through `localizePath(path, lang)` (or come from `data/site.ts` factories); never hardcode `/projects/` etc.
-- Components take props typed by interfaces from `src/data/site.ts`; pages map entries through `toXxx()` mappers in `src/lib/content.ts` — don't pass raw collection entries to components.
-- Framer Motion: always reuse `aeonEase`, `inViewViewport`, `fadeUpTransition` from `src/components/motion.ts`; never inline ad-hoc easings.
-- Theme is dual-mode via `html[data-theme='dark'|'light']` CSS variables in `src/styles/global.css` (`--body-*`, `--shell-*`, `--color-*`, fonts Orbitron/Space Grotesk). `ThemeToggle` persists to `localStorage` key `chy3-theme`. New colors go in the `@theme` block or the `data-theme` var sets — hardcode colors only for one-off motion accents.
-- Content schemas are strict: every frontmatter field must match `src/content.config.ts` (e.g. `statusTone: 'green'|'blue'|'gold'`); add defaults there rather than loosening types.
-- Dates: `publishedAt` coerced via `z.coerce.date()`; format with `src/lib/format.ts` (UTC, en-US Intl).
-- Code style: 2-space indent, single quotes, no semicolons, `interface XxxProps`, default-export components (follows repo + Astro defaults).
 
-## Notes
-- (stub — add project-specific gotchas here as they come up)
+- **Never hardcode UI copy in layouts.** Add a key to both i18n files and read it with `$i18n.get('key')`. Keys are identifiers: underscores, no dots. Both locale dictionaries must have identical keys.
+- **Page copy is localized in content**, not i18n: titles, descriptions, statuses, facts, and highlights are authored per locale.
+- **Internal links:** use `$site.page('projects').link()` or `$page.link()`; do not hardcode paths like `/projects/`.
+- **Frontmatter:** Ziggy syntax. `.date = .date("YYYY-MM-DDT00:00:00")` is required. Strings use double quotes. Custom maps use `.custom = .{ ... }`.
+- **Dynamic custom values:** use `$page.custom.get('key')`, not dot access. For optional values in `:if`, use `$page.custom.get?('key')` and `$if`. Attributes are evaluated even when an element's `:if` is false, so give defaults with `getOr('key', 'fallback')` when an attribute might read a missing value.
+- **Loops:** `:loop` repeats the *children* of the element it is on, not the element itself. To repeat a sibling element (a card, a grid item, a link), wrap it in a non-rendering `<ctx :loop="...">...</ctx>`. `$loop` is not available in the loop element's own attributes; use a `<ctx>` wrapper and reference it in children.
+- **Conditionals:** `:if="expr"` on an element renders the element and children only when true; `$if` is the unwrapped optional inside. Use `<ctx :if="...">` for a non-rendering conditional wrapper.
+- **Layouts:** child layouts `<extend template="base.shtml">` and define blocks matching base's `<super>` locations: `<head id="head">` and `<main id="main">`. Do not add `</html>` to child layouts.
+- **SuperMD headings:** body headings use a single `#`; `headings_h2 = true` makes them render as `<h2>`.
+- **Dates:** Go layout strings. Use `2006.01.02` for ISO-style display; `2006` is the year token (not `2026`).
+- **Assets:** reference with `$site.asset('style.css').link()`. Fonts, favicon, and OG image must be listed in `static_assets` in `zine.ziggy`; CSS `url()` resources are not discovered by zdoc.
+- **Design system:** all tokens and components live in `site/assets/style.css`. One accent (`--signal: #ff5a36`). Archivo + JetBrains Mono. Square corners, hairline rules. Do not introduce a second accent or a new radius system.
+- **Motion:** CSS + the small script in `app.js`. Respect `prefers-reduced-motion`. `?noanim=1` disables reveal animations for screenshots.
+- **Code style:** 2-space indent; CSS uses two-space indentation. JavaScript follows the existing `app.js` style (semicolons, single quotes).
+
+## Gotchas
+
+- The zdoc v0.16.2 release binary exposes the older Zine CLI: use `zdoc release` from `site/` (the build script does this). The newer source tree also keeps the `release` command as an alias, so this stays compatible.
+- `zdoc release --force` writes into `dist/` but does not remove stale files; `scripts/zdoc.mjs` deletes `dist/` before each build.
+- The base layout is fixed/sticky; scroll offsets use the `--head-h` variable in `style.css`.
+- Home sections have anchor IDs (`#projects`, `#platform`, `#insight`, `#signals`, `#roadmap`, `#contribute`) for in-page links and screenshot QA.

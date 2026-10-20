@@ -1,0 +1,33 @@
+---
+.title = "AI Co-Creation Suite",
+.date = .date("2027-03-31T00:00:00"),
+.layout = "article.shtml",
+.description = "An intelligent creative assistant integrating large language models across copy, design, code, and market analysis.",
+.translation_key = "roadmap-ai-suite",
+.custom = .{
+  .quarter = "2027 Q1",
+  .kind = "roadmap",
+  .kicker = "Roadmap / 2027 Q1",
+  .status = "Planned",
+  .status_tone = "next",
+  .facts = [
+      .{ .label = "Quarter", .value = "2027 Q1" },
+      .{ .label = "Status", .value = "Planned" },
+      .{ .label = "Scope", .value = "AI co-creation" }
+    ],
+},
+---
+
+In 2027, CHY3 moves from a tool platform to a co-creation platform. The AI Co-Creation Suite is not a chat box bolted onto the product. It is a set of models integrated into the places where creative work actually slows down.
+
+# Four surfaces
+
+A copy engine drafts product descriptions, launch notes, and localized variants. A design assistant proposes palettes, layout directions, and rapid visual variations. A code assistant is tuned for CreaSDK APIs, so integration work takes an afternoon instead of a sprint. A market analyst reads the ValueFlow pipeline and surfaces growth opportunities, anomalies, and audience shifts.
+
+# Context is the advantage
+
+Generic AI tools do not know the project, the revenue data, or the audience. The suite does. Its suggestions can be specific: this pricing page loses people at the third step; this audience responds to a different promise; this content format has the best retention per hour invested.
+
+# Rollout
+
+The first beta arrives in Q1 2027, starting inside IdeaForge with the copy and design modules. Code and market analysis follow as the data layer matures.

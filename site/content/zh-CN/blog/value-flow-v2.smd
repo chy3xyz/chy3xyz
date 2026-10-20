@@ -1,0 +1,37 @@
+---
+.title = "ValueFlow v2.0 发布：全链路变现分析",
+.date = .date("2026-06-20T00:00:00"),
+.layout = "article.shtml",
+.description = "ValueFlow 迎来重大更新，新增多平台数据聚合、AI 驱动的收益归因和自定义 Dashboard。",
+.translation_key = "blog-value-flow-v2",
+.custom = .{
+  .desk = "产品更新",
+  .author = "Alex Chen",
+  .read_time = "4 分钟",
+  .kind = "blog",
+  .kicker = "博客 / 发布",
+  .facts = [
+      .{ .label = "发布", .value = "2026 年 6 月 20 日" },
+      .{ .label = "作者", .value = "Alex Chen" },
+      .{ .label = "栏目", .value = "产品更新" }
+    ],
+},
+---
+
+ValueFlow v2.0 今天正式发布。这是项目启动以来最大的一次版本更新，重点集中在三件事：更广的数据、更聪明的归因，以及更多对分析界面的控制权。
+
+# 更多平台
+
+v2.0 在 Stripe 和 Paddle 之外，新增了 Lemon Squeezy、Buymeacoffee 和 Patreon。更重要的是，数据源插件接口现在公开了。任何开发者都可以为自己的支付平台编写适配器，不必等我们排期。
+
+# 会学习的归因
+
+旧版归因引擎基于规则。新版加入了一个轻量模型，估计不同渠道和内容类型对一次转化的相对贡献。模型在公开的创作者经济数据集上训练，再在每个部署实例上根据本地数据持续微调，因此结果反映的是运营者自己的受众，而不是一个通用基准。
+
+# 贴合业务的看板
+
+拖拽式布局、自定义指标公式和团队共享看板，把企业级 BI 的体验带给独立创作者。没有新增付费层级——这些功能都在开源版本里。
+
+# 升级
+
+完整的 Changelog 和迁移指南在仓库中。数据模型向后兼容，现有 Dashboard 可以继续使用。

@@ -1,0 +1,64 @@
+<extend template="base.shtml">
+<head id="head">
+</head>
+<main id="main">
+  <section class="collection-head">
+    <div class="container">
+      <p class="kicker"><span class="kicker-dot"></span><span :text="$i18n.get('insights_kicker')"></span></p>
+      <div class="collection-title-row">
+        <h1 class="display-1" :text="$i18n.get('insights_title')"></h1>
+        <div class="collection-count">
+          <span class="collection-count-num" :text="$page.subpages().len"></span>
+          <span class="collection-count-label" :text="$i18n.get('insights_count')"></span>
+        </div>
+      </div>
+      <p class="collection-lede" :text="$i18n.get('insights_lede')"></p>
+    </div>
+  </section>
+
+  <section class="feature feature-index">
+    <div class="container">
+      <div class="feature-index-mark" aria-hidden="true">
+        <span class="fim-ring fim-ring-1"></span>
+        <span class="fim-ring fim-ring-2"></span>
+        <span class="fim-core"></span>
+      </div>
+      <div :if="$page.subpages().first?()">
+          <div class="feature-index-top">
+            <span class="section-label" :text="$i18n.get('insights_featured')"></span>
+            <span class="feature-pill" :text="$if.custom.get('category')"></span>
+          </div>
+          <h2 class="feature-title feature-title-large"><a href="$if.link()" :text="$if.title"></a></h2>
+          <p class="feature-lede" :text="$if.description"></p>
+          <div class="feature-actions">
+            <a class="btn btn-ink" href="$if.link()">
+              <span :text="$i18n.get('insights_read')"></span>
+              <span class="btn-arrow">→</span>
+            </a>
+            <span class="feature-read" :text="$if.custom.get('read_time')"></span>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="insight-list">
+        <ctx :loop="$page.subpages().slice(1)">
+          <a class="insight-row" href="$loop.it.link()">
+            <ctx insight="$loop.it">
+            <span class="insight-index">0<span :text="$loop.idx.str()"></span></span>
+            <div class="insight-body">
+              <span class="insight-cat" :text="$ctx.insight.custom.get('category')"></span>
+              <h3 :text="$ctx.insight.title"></h3>
+              <p :text="$ctx.insight.description"></p>
+            </div>
+            <span class="insight-read" :text="$ctx.insight.custom.get('read_time')"></span>
+            <span class="project-arrow">↗</span>
+          </ctx>
+          </a>
+        </ctx>
+      </div>
+    </div>
+  </section>
+</main>

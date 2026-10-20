@@ -1,0 +1,63 @@
+<extend template="base.shtml">
+<head id="head">
+</head>
+<main id="main">
+  <section class="collection-head">
+    <div class="container">
+      <p class="kicker"><span class="kicker-dot"></span><span :text="$i18n.get('roadmap_kicker')"></span></p>
+      <div class="collection-title-row">
+        <h1 class="display-1" :text="$i18n.get('roadmap_title')"></h1>
+        <div class="collection-count">
+          <span class="collection-count-num" :text="$page.subpages().len"></span>
+          <span class="collection-count-label" :text="$i18n.get('roadmap_count')"></span>
+        </div>
+      </div>
+      <p class="collection-lede" :text="$i18n.get('roadmap_lede')"></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="timeline">
+        <div class="timeline-year"><span>2026</span></div>
+        <a class="timeline-item" href="$site.page('roadmap/core-platform-ga').link()">
+          <span class="timeline-marker" data-tone="now"></span>
+          <div class="timeline-meta">
+            <span class="timeline-q" :text="$site.page('roadmap/core-platform-ga').custom.get('quarter')"></span>
+            <span class="status" data-tone="$site.page('roadmap/core-platform-ga').custom.get('status_tone')"><i></i><span :text="$site.page('roadmap/core-platform-ga').custom.get('status')"></span></span>
+          </div>
+          <div class="timeline-body">
+            <h2 :text="$site.page('roadmap/core-platform-ga').title"></h2>
+            <p :text="$site.page('roadmap/core-platform-ga').description"></p>
+            <span class="timeline-link"><span :text="$i18n.get('roadmap_view')"></span> <span>→</span></span>
+          </div>
+        </a>
+        <a class="timeline-item" href="$site.page('roadmap/marketplace-launch').link()">
+          <span class="timeline-marker" data-tone="next"></span>
+          <div class="timeline-meta">
+            <span class="timeline-q" :text="$site.page('roadmap/marketplace-launch').custom.get('quarter')"></span>
+            <span class="status" data-tone="$site.page('roadmap/marketplace-launch').custom.get('status_tone')"><i></i><span :text="$site.page('roadmap/marketplace-launch').custom.get('status')"></span></span>
+          </div>
+          <div class="timeline-body">
+            <h2 :text="$site.page('roadmap/marketplace-launch').title"></h2>
+            <p :text="$site.page('roadmap/marketplace-launch').description"></p>
+            <span class="timeline-link"><span :text="$i18n.get('roadmap_view')"></span> <span>→</span></span>
+          </div>
+        </a>
+        <div class="timeline-year timeline-year-next"><span>2027</span></div>
+        <a class="timeline-item" href="$site.page('roadmap/ai-co-creation-suite').link()">
+          <span class="timeline-marker" data-tone="next"></span>
+          <div class="timeline-meta">
+            <span class="timeline-q" :text="$site.page('roadmap/ai-co-creation-suite').custom.get('quarter')"></span>
+            <span class="status" data-tone="$site.page('roadmap/ai-co-creation-suite').custom.get('status_tone')"><i></i><span :text="$site.page('roadmap/ai-co-creation-suite').custom.get('status')"></span></span>
+          </div>
+          <div class="timeline-body">
+            <h2 :text="$site.page('roadmap/ai-co-creation-suite').title"></h2>
+            <p :text="$site.page('roadmap/ai-co-creation-suite').description"></p>
+            <span class="timeline-link"><span :text="$i18n.get('roadmap_view')"></span> <span>→</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>

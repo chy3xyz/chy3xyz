@@ -1,0 +1,33 @@
+---
+.title = "Platform Capabilities",
+.date = .date("2026-07-01T00:00:00"),
+.layout = "page.shtml",
+.description = "The CHY3 platform is built around idea incubation, value validation, and scaled monetization, giving creators end-to-end tooling.",
+.translation_key = "platform",
+.custom = .{
+  .eyebrow = "Product system",
+  .highlights = [
+      .{ .label = "Core modules", .value = "IdeaForge, ValueFlow, CreaSDK, Marketplace" },
+      .{ .label = "Design philosophy", .value = "Modular and pluggable. Use one tool or the whole workflow." },
+      .{ .label = "Technical standard", .value = "REST and GraphQL APIs, webhook events, multi-language SDKs." }
+    ],
+},
+---
+
+CHY3 is organized around a single journey: find and validate an idea, build a monetization path, then improve the economics with data. Each stage has a dedicated module; all of them share one API layer and one event system.
+
+# Incubate
+
+IdeaForge handles the cold start. An AI-assisted ideation engine turns a sentence into a structured outline and feasibility read. A prototype generator produces an interactive web or mobile mockup. A community review system puts the premise in front of real people before the team commits months to it.
+
+# Validate
+
+ValueFlow aggregates transactions from every payment provider in use, then shows which content, channel, and cohort produced the revenue. Funnels, attribution, and forecasting turn a vague sense of “what works” into a model that can be inspected and challenged.
+
+# Scale
+
+CreaSDK packages payments, subscriptions, distribution, and community operations as standard modules. A team can adopt one primitive or the whole stack. The design goal is to compress months of monetization plumbing into weeks.
+
+# Coordinate
+
+The Creator Marketplace, launching in Q4 2026, is the layer where the three stages meet: ideas incubated in IdeaForge, business models validated in ValueFlow, and capabilities delivered through CreaSDK.

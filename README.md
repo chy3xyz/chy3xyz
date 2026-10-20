@@ -1,149 +1,129 @@
-# CHY3
+# CHY3 — chy3.xyz
 
-<div align="center">
+Bilingual marketing site for **CHY3**, an open-source creative-monetization infrastructure project. The site is built with [zdoc](https://github.com/chy3xyz/zdoc): Markdown content, SuperHTML layouts, and a hand-written design system. No Astro, no Tailwind, no JavaScript framework.
 
-**CHY3**
+## Stack
 
-A cinematic, content-driven creative monetization platform site built with **Astro 6**, **React 19**, **Tailwind CSS 4**, and **Framer Motion**. Designed for showcasing open-source projects, insights, and platform capabilities.
+- **zdoc 0.16.2** — a Zig static-site generator (a fork of Zine). Content lives in SuperMD files; layouts are SuperHTML templates.
+- **Bilingual by build** — English at the root, Chinese under `/zh/`, through zdoc's multilingual site config and `translation_key` page matching.
+- **Design system** — hand-written CSS. Archivo (variable) for display and body, JetBrains Mono for labels and data. One signal accent: vermilion `#ff5a36` on near-black `#07090b`. Self-hosted fonts.
+- **Motion** — a small vanilla IntersectionObserver script for scroll reveals and a reading-progress bar. Everything is visible without JavaScript.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Astro](https://img.shields.io/badge/Astro-6.x-FF5D01?logo=astro&logoColor=white)](https://astro.build)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.x-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
-[![React](https://img.shields.io/badge/React-19.x-61DAFB?logo=react&logoColor=061826)](https://react.dev)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.x-0055FF?logo=framer&logoColor=white)](https://motion.dev)
-
-</div>
-
-## Overview
-
-CHY3 is an open-source creative monetization infrastructure platform. This site serves as the public face of the `chy3xyz` GitHub organization, showcasing projects, sharing insights on the creator economy, and documenting the platform roadmap.
-
-- 🌐 **Website**: [chy3.xyz](https://chy3.xyz)
-- 🐙 **GitHub**: [github.com/chy3xyz](https://github.com/chy3xyz)
-
-## Current State
-
-The site features a responsive home page, typed markdown collections, light/dark mode, theme-aware branding, animated statistics, and archive/detail pages for projects, insights, roadmap, and blog.
-
-- Full-bleed cinematic hero with animated star field and angled desktop navigation
-- Sticky glassmorphism header with scroll-aware hide/reveal
-- Light/dark theme toggle with persisted user preference
-- Animated count-up stats section
-- Project, insight, roadmap, and blog collection pages
-- Markdown-powered detail pages with Astro Content Collections
-- Responsive desktop, tablet, and mobile layouts
-- Framer Motion polish for all interactive elements
-
-## ✨ Features
-
-- ⚡ **Astro 6 + TypeScript** — Static-first site with typed content schemas
-- ⚛️ **React islands** — Interactive hero, theme toggle, stats, and motion sections
-- 🎨 **Tailwind CSS 4** — Custom theme tokens and light/dark design variables
-- 🎬 **Framer Motion** — Entrance animations, section reveals, and hover affordances
-- 📝 **Astro Content Collections** — Validated markdown for projects, insights, roadmap, and blog
-- 📱 **Responsive** — Desktop, tablet, and mobile layouts
-- ☁️ **Deploy-Ready** — Vercel and Cloudflare Workers support
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Node.js `>= 22.12.0`
-- npm
-
-### Installation
+## Commands
 
 ```bash
-git clone https://github.com/chy3xyz/chy3xyz.git
-cd chy3xyz
-npm install
-npm run dev
+npm run build     # clean + build the site into dist/
+npm run preview   # serve dist/ at http://localhost:4321
+npm run dev       # zdoc dev server (http://localhost:1990)
 ```
 
-Visit `http://localhost:4321` to view the site.
-
-## 📋 Commands
-
-| Command | Action |
-| :--- | :--- |
-| `npm install` | Install dependencies |
-| `npm run dev` | Start dev server at `localhost:4321` |
-| `npm run build` | Build the default static production site to `./dist/` |
-| `npm run build:vercel` | Build with `@astrojs/vercel` adapter |
-| `npm run build:cloudflare` | Build with `@astrojs/cloudflare` adapter |
-| `npm run preview` | Preview the production build locally |
-| `npm run preview:cloudflare` | Build and preview with Wrangler |
-| `npm run deploy:cloudflare` | Build and deploy to Cloudflare Workers |
-| `npm run check` | Run Astro checks |
-
-## ☁️ Deployment
-
-### Cloudflare Workers
+The first build downloads the zdoc release binary for your platform into `.cache/zdoc/`. To use an existing binary instead:
 
 ```bash
-npm run deploy:cloudflare
+ZDOC_BIN=/path/to/zdoc npm run build
 ```
 
-The Cloudflare adapter is configured with `prerenderEnvironment: 'node'` for static prerendering compatibility.
+Requires Node.js 20+ for the build scripts. zdoc itself has no runtime dependencies.
 
-## 📂 Project Structure
+## Structure
 
 ```text
-chy3xyz/
-├── public/
-│   ├── brand/          # Theme-aware CHY3 logo assets
-│   ├── images/         # Site imagery
-│   └── images-src/     # Source illustrations
-├── src/
-│   ├── components/     # React islands and UI sections
-│   ├── content/        # Markdown content collections
-│   │   ├── blog/
-│   │   ├── insights/
-│   │   ├── pages/
-│   │   ├── projects/
-│   │   └── roadmap/
-│   ├── data/           # Site configuration and types
-│   ├── layouts/        # Shared page and entry layouts
-│   ├── lib/            # Content mapping and formatting utilities
-│   ├── pages/          # File-based routes
-│   └── styles/         # Global CSS and theme tokens
-├── astro.config.mjs
-├── package.json
-├── tsconfig.json
-└── wrangler.jsonc
+site/
+  zine.ziggy              # multilingual site config, locales, static assets
+  content/en-US/          # English pages (output at /)
+  content/zh-CN/          # Chinese pages (output at /zh/)
+  i18n/en-US.ziggy        # UI copy, English
+  i18n/zh-CN.ziggy        # UI copy, Chinese
+  layouts/                # SuperHTML templates
+    templates/base.shtml  # chrome, head, navigation, footer
+    index.shtml           # home
+    projects-index.shtml  # collection layouts
+    insights-index.shtml
+    blog-index.shtml
+    roadmap-index.shtml
+    article.shtml         # project / insight / journal / milestone detail
+    page.shtml            # platform / ecosystem / about
+  assets/
+    style.css             # the design system
+    app.js                # reveal + progress + mobile menu behaviour
+    fonts/                # self-hosted Archivo and JetBrains Mono
+    favicon.svg, og.jpg, hero-galaxy.jpg
+scripts/
+  zdoc.mjs                # resolves/builds with zdoc, downloads it if needed
+  serve.mjs               # dependency-free static server for dist/
 ```
 
-## 📝 Content Management
+## Adding a page
 
-All content is file-based in `src/content/`. Validated by `src/content.config.ts`.
+Content is a SuperMD file. The filename becomes the URL:
 
-### Projects
+- `site/content/en-US/projects/idea-forge.smd` → `/projects/idea-forge/`
+- `site/content/zh-CN/projects/idea-forge.smd` → `/zh/projects/idea-forge/`
 
-Path: `src/content/projects/`
+Every page has frontmatter:
 
-Frontmatter: `title`, `summary`, `status`, `statusTone` (green/blue/gold), `icon` (box/code/zap), `order`, `repo`, `language`, `stars`
+```yaml
+---
+.title = "IdeaForge — Idea Incubation Engine",
+.date = .date("2026-03-01T00:00:00"),
+.layout = "article.shtml",
+.description = "One-line summary used for cards and metadata.",
+.translation_key = "project-idea-forge",
+.custom = .{
+  .kind = "project",
+  .kicker = "Project / 01",
+  .status = "Active",
+  .status_tone = "live",
+  .repo = "chy3xyz/idea-forge",
+  .repo_url = "https://github.com/chy3xyz/idea-forge",
+  .language = "TypeScript",
+  .stars = "856",
+  .facts = [
+    .{ .label = "Repository", .value = "chy3xyz/idea-forge" },
+    .{ .label = "Language", .value = "TypeScript" },
+    .{ .label = "GitHub stars", .value = "856" },
+  ],
+},
+---
+```
 
-### Insights
+Body headings use a single `#`; `site/zine.ziggy` sets `supermd.headings_h2 = true`, so they render as `<h2>`.
 
-Path: `src/content/insights/`
+## Bilingual copy
 
-Frontmatter: `title`, `summary`, `category`, `readTime`, `publishedAt`, `image`
+UI strings live in `site/i18n/en-US.ziggy` and `site/i18n/zh-CN.ziggy`. Both files must keep the same keys. Templates read them with:
 
-### Roadmap
+```html
+<span :text="$i18n.get('nav_projects')"></span>
+```
 
-Path: `src/content/roadmap/`
+Keys are Ziggy identifiers, so use underscores (`nav_projects`), not dots. Page copy (titles, descriptions, facts) lives in each locale's content tree. Set the same `translation_key` on corresponding pages so the language switcher and `hreflang` links connect them.
 
-Frontmatter: `title`, `summary`, `status` (planned/in-progress/shipped), `quarter`, `order`
+## Design notes
 
-### Blog
+- **Palette:** `--ink #07090b`, `--paper #f1ede4`, `--signal #ff5a36`, warm neutral greys. No second accent colour; status dots use paper, signal, or an outline.
+- **Type:** Archivo with a slight width stretch for display; JetBrains Mono for metadata. Chinese falls back to PingFang SC / Noto Sans SC.
+- **Geometry:** square corners for interactive elements, hairline rules, numbered sections, oversized wordmark. Orbit diagrams are CSS, not images; the galaxy photograph is used only as atmosphere in the hero.
+- **Motion:** `prefers-reduced-motion` disables animations. Add `?noanim=1` to a URL to disable reveal animations for screenshots.
 
-Path: `src/content/blog/`
+## Deploy to GitHub Pages
 
-Frontmatter: `title`, `summary`, `publishedAt`, `author`, `desk`, `image`
+`npm run build` writes a static `dist/`. The repository deploys to GitHub Pages through `.github/workflows/pages.yml` on every push to `main`, and publishes the custom domain `chy3.xyz`.
 
-### Pages
+The domain is registered at **Dynadot** (`ns1.dyna-ns.net` / `ns2.dyna-ns.net`). GitHub Pages needs these records at the DNS host:
 
-Path: `src/content/pages/`
+| Type | Name | Value |
+|---|---|---|
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| AAAA | `@` | `2606:50c0:8000::153` |
+| AAAA | `@` | `2606:50c0:8001::153` |
+| AAAA | `@` | `2606:50c0:8002::153` |
+| AAAA | `@` | `2606:50c0:8003::153` |
+| CNAME | `www` | `chy3xyz.github.io` |
 
-Frontmatter: `title`, `summary`, `eyebrow`, `image`, `highlights`
+The repo contains `site/assets/CNAME` (published as `dist/CNAME`) with `chy3.xyz`. In the repository's **Settings → Pages**, the source is **GitHub Actions** and the custom domain is `chy3.xyz`. HTTPS is enabled automatically after GitHub verifies the DNS records and issues a certificate.
+
+All internal links are root-relative, so the site must be served from a domain root. If it is hosted under a subpath instead, adjust `url_path_prefix` (simple sites) or `output_prefix_override` / host settings in `zine.ziggy`.

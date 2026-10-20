@@ -1,0 +1,36 @@
+---
+.title = "The 2026 Creator Economy: From Attention to Value",
+.date = .date("2026-06-15T00:00:00"),
+.layout = "article.shtml",
+.description = "The creator economy is shifting from an attention economy to a value economy. How independent creators build sustainable monetization loops with open-source tools.",
+.translation_key = "insight-creator-economy",
+.custom = .{
+  .category = "Industry insight",
+  .read_time = "8 min read",
+  .kind = "insight",
+  .kicker = "Insight / Industry",
+  .facts = [
+      .{ .label = "Published", .value = "15 June 2026" },
+      .{ .label = "Read time", .value = "8 min read" },
+      .{ .label = "Filed under", .value = "Industry insight" }
+    ],
+},
+---
+
+For a decade, the creator economy was described almost entirely in the language of attention. Followers, views, watch time, engagement rate — these were the coordinates of success. In 2026, a different model is taking shape: creators are moving from chasing attention to compounding value.
+
+# The attention model is breaking
+
+Three forces are doing the damage. Platform algorithms remain unpredictable, so a single ranking change can halve a creator's income. Generative AI has collapsed the cost of producing content, which dilutes the value of another unit of attention. And open-source tooling plus decentralized payments have made it technically possible to own the relationship with an audience instead of renting it.
+
+# Three forces, one shift
+
+The shift is not about rejecting platforms. It is about refusing to let a platform own the entire economic layer. A creator who can accept payment directly, deliver a product on their own infrastructure, and understand where revenue comes from has options that a creator with a large following and no owned channel does not.
+
+# The value flywheel
+
+The creators who compound are not necessarily the ones with the most followers. They build technical credibility through open-source work, a professional brand through consistent writing, and a low-friction product through modular tools. The result is a mixed revenue structure: subscriptions, technical services, paid knowledge, and open-source sponsorship. Each piece makes the others easier to sell.
+
+# What we are building
+
+CHY3 exists in this shift. IdeaForge handles early validation, ValueFlow makes the revenue path observable, and CreaSDK standardizes the primitives. The long-term advantage for a creator is not a single viral moment. It is the ability to turn a body of work into a system that keeps paying.

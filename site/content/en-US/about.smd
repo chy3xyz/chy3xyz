@@ -1,0 +1,33 @@
+---
+.title = "About CHY3",
+.date = .date("2026-07-01T00:00:00"),
+.layout = "page.shtml",
+.description = "CHY3 is an open-source creative monetization infrastructure project lowering the barrier between creative work and sustainable income.",
+.translation_key = "about",
+.custom = .{
+  .eyebrow = "Organization overview",
+  .highlights = [
+      .{ .label = "Mission", .value = "Build an open, transparent, composable toolchain so every valuable idea can find a commercial path." },
+      .{ .label = "Operating model", .value = "Fully open source, community governed. Apache 2.0 and MIT." },
+      .{ .label = "Founded", .value = "2026" }
+    ],
+},
+---
+
+CHY3 began with a simple question: in an era when digital creativity is abundant, why is it still so hard to turn creative work into sustainable income?
+
+# The gap
+
+The problem is not a shortage of ideas or audiences. It is a shortage of open, composable infrastructure built for creators. Mainstream monetization tools are either closed platforms or enterprise systems designed for someone else's scale. Independent creators are left to choose between flexibility and completeness.
+
+# Our answer
+
+Build the toolchain in the open. CHY3 releases its core under Apache 2.0 and MIT, so any person or organization can use, modify, and distribute the stack without a licensing conversation. Open code is not a marketing position; it is the only way we know to make infrastructure trustworthy.
+
+# How we work
+
+CHY3 is governed by a distributed community rather than a traditional company. Technical decisions go through public RFCs. Maintainers work across time zones and keep the rhythm through asynchronous review and monthly calls. The people closest to the problem — creators — should set the direction.
+
+# Build, don't consume
+
+Every user is encouraged to become a contributor: code, documentation, a bug report, or help for another user. We are not optimizing for community size. We are optimizing for a deep network of people who know how the system works. Today that network spans more than 15 countries. The long-term ambition is to become a default infrastructure layer for the creative economy — the way TCP/IP became default for the internet.

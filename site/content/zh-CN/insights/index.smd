@@ -1,0 +1,9 @@
+---
+.title = "洞察",
+.date = .date("2026-07-01T00:00:00"),
+.layout = "insights-index.shtml",
+.description = "关于独立创意工作的经济、架构与手艺。",
+.translation_key = "insights-index",
+---
+
+关于创意如何变现的笔记，随思考一起发布。

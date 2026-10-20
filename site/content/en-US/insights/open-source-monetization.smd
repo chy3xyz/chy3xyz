@@ -1,0 +1,36 @@
+---
+.title = "Designing Commercial Paths for Open-Source Projects",
+.date = .date("2026-05-28T00:00:00"),
+.layout = "article.shtml",
+.description = "Open source does not mean free. How projects achieve sustainable profitability through hosted services, ecosystem plays, and support — without betraying community trust.",
+.translation_key = "insight-open-source",
+.custom = .{
+  .category = "Business strategy",
+  .read_time = "12 min read",
+  .kind = "insight",
+  .kicker = "Insight / Business strategy",
+  .facts = [
+      .{ .label = "Published", .value = "28 May 2026" },
+      .{ .label = "Read time", .value = "12 min read" },
+      .{ .label = "Filed under", .value = "Business strategy" }
+    ],
+},
+---
+
+“How does open source make money?” Every maintainer has heard the question. The old answers sat at two extremes: donations, or a closed-source commercial edition. By 2026, the viable paths are more varied, and they do not require betraying the community that made the project worth using.
+
+# The false binary
+
+Open source is not a pricing strategy; it is a distribution and trust strategy. The mistake is to treat the license as the business model. The license decides who can use the code. The business model decides what people pay for: convenience, accountability, integration, or speed.
+
+# Open core, hosted service
+
+The most common pattern is a fully open core with a hosted service on top. ValueFlow follows it: the ingestion pipeline, attribution engine, and visualization layer are open. Managed infrastructure, team dashboards, and enterprise SLAs are paid. Users can leave for a self-hosted deployment at any time, which is exactly why the paid offer has to be genuinely better rather than merely available.
+
+# The ecosystem play
+
+Developer tools can go further: open a primitive powerful enough that other people build plugins, integrations, and companies on top of it. Once the tool becomes the default interface, the project can monetize through a certified plugin marketplace, training, and support. CreaSDK is exploring this path.
+
+# Trust is the moat
+
+Whatever the model, the condition is the same. The community must believe that the open protocol will not be closed, that telemetry will not appear in a minor release, and that the core will not be hollowed out. Trust is slow to earn and fast to lose. Once it exists, open-source commercialization has a ceiling higher than proprietary software: acquisition costs approach zero, the product is audited by its users, and the brand is built by code and word of mouth rather than an ad budget.

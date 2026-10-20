@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="$page.site().localeCode()">
+<head id="head">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07090b">
+  <meta name="color-scheme" content="dark">
+  <title :text="$page.title"></title>
+  <meta name="description" content="$page.description">
+  <meta property="og:title" content="$page.title">
+  <meta property="og:description" content="$page.description">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://chy3.xyz/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="CHY3">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="$site.host_url.addPath($page.link())">
+  <link rel="icon" type="image/svg+xml" href="$site.asset('favicon.svg').link()">
+  <link rel="preload" href="$site.asset('fonts/archivo-latin.woff2').link()" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="$site.asset('fonts/jetbrains-mono-latin.woff2').link()" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="$site.asset('style.css').link()">
+  <ctx :loop="$page.locales()">
+    <link rel="alternate" hreflang="$loop.it.site().localeCode()" href="$site.host_url.addPath($loop.it.link())">
+  </ctx>
+  <script src="$site.asset('app.js').link()" defer></script>
+  <super>
+</head>
+<body id="body">
+  <a class="skip-link" href="#main" :text="$i18n.get('skip_link')"></a>
+  <header class="site-head" data-header>
+    <div class="head-inner">
+      <a class="brand" href="$site.index().link()" aria-label="CHY3">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"></circle>
+          <ellipse cx="16" cy="16" rx="14" ry="5.4" transform="rotate(-26 16 16)" fill="none" stroke="var(--signal)" stroke-width="1.8"></ellipse>
+          <circle cx="16" cy="16" r="2.4" fill="var(--signal)"></circle>
+        </svg>
+        <span class="brand-word">CHY3</span>
+      </a>
+      <nav class="head-nav" aria-label="Primary">
+        <a href="$site.page('projects').link()" :text="$i18n.get('nav_projects')"></a>
+        <a href="$site.page('platform').link()" :text="$i18n.get('nav_platform')"></a>
+        <a href="$site.page('insights').link()" :text="$i18n.get('nav_insights')"></a>
+        <a href="$site.page('blog').link()" :text="$i18n.get('nav_blog')"></a>
+        <a href="$site.page('roadmap').link()" :text="$i18n.get('nav_roadmap')"></a>
+        <a href="$site.page('about').link()" :text="$i18n.get('nav_about')"></a>
+      </nav>
+      <div class="head-tools">
+        <a class="head-github" href="https://github.com/chy3xyz" rel="noopener noreferrer">
+          <span :text="$i18n.get('nav_github')"></span>
+          <span class="head-github-arrow">↗</span>
+        </a>
+        <div class="lang-switch" aria-label="$i18n.get('nav_language')">
+          <ctx :loop="$page.locales()">
+            <a class="lang-opt $loop.it.isCurrent().then('is-active')" href="$loop.it.link()" hreflang="$loop.it.site().localeCode()" :text="$loop.it.site().localeName()"></a>
+          </ctx>
+        </div>
+        <details class="menu">
+          <summary class="menu-toggle" aria-label="$i18n.get('nav_menu')">
+            <span></span>
+            <span></span>
+          </summary>
+          <div class="menu-panel">
+            <nav class="menu-nav" aria-label="Mobile">
+              <a href="$site.page('projects').link()"><span>01</span><strong :text="$i18n.get('nav_projects')"></strong></a>
+              <a href="$site.page('platform').link()"><span>02</span><strong :text="$i18n.get('nav_platform')"></strong></a>
+              <a href="$site.page('insights').link()"><span>03</span><strong :text="$i18n.get('nav_insights')"></strong></a>
+              <a href="$site.page('blog').link()"><span>04</span><strong :text="$i18n.get('nav_blog')"></strong></a>
+              <a href="$site.page('roadmap').link()"><span>05</span><strong :text="$i18n.get('nav_roadmap')"></strong></a>
+              <a href="$site.page('about').link()"><span>06</span><strong :text="$i18n.get('nav_about')"></strong></a>
+            </nav>
+            <div class="menu-foot">
+              <a href="https://github.com/chy3xyz" rel="noopener noreferrer" :text="$i18n.get('nav_github')"></a>
+              <a href="$site.page('ecosystem').link()" :text="$i18n.get('nav_ecosystem')"></a>
+              <a href="mailto:hello@chy3.xyz" :text="$i18n.get('footer_contact')"></a>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <super>
+  </main>
+  <footer class="site-foot">
+    <div class="container">
+      <div class="foot-top">
+        <div class="foot-brand">
+          <a class="brand brand-foot" href="$site.index().link()">
+            <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+              <circle cx="16" cy="16" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"></circle>
+              <ellipse cx="16" cy="16" rx="14" ry="5.4" transform="rotate(-26 16 16)" fill="none" stroke="var(--signal)" stroke-width="1.8"></ellipse>
+              <circle cx="16" cy="16" r="2.4" fill="var(--signal)"></circle>
+            </svg>
+            <span class="brand-word">CHY3</span>
+          </a>
+          <p :text="$i18n.get('footer_desc')"></p>
+          <span class="foot-community" :text="$i18n.get('footer_community')"></span>
+        </div>
+        <div class="foot-cols">
+          <div class="foot-col">
+            <h3 :text="$i18n.get('footer_explore')"></h3>
+            <a href="$site.page('projects').link()" :text="$i18n.get('nav_projects')"></a>
+            <a href="$site.page('platform').link()" :text="$i18n.get('nav_platform')"></a>
+            <a href="$site.page('insights').link()" :text="$i18n.get('nav_insights')"></a>
+            <a href="$site.page('blog').link()" :text="$i18n.get('nav_blog')"></a>
+            <a href="$site.page('roadmap').link()" :text="$i18n.get('nav_roadmap')"></a>
+            <a href="$site.page('ecosystem').link()" :text="$i18n.get('nav_ecosystem')"></a>
+            <a href="$site.page('about').link()" :text="$i18n.get('nav_about')"></a>
+          </div>
+          <div class="foot-col">
+            <h3 :text="$i18n.get('footer_connect')"></h3>
+            <a href="https://github.com/chy3xyz" rel="noopener noreferrer" :text="$i18n.get('nav_github')"></a>
+            <a href="mailto:hello@chy3.xyz" :text="$i18n.get('footer_contact')"></a>
+            <a href="$site.page('about').link()" :text="$i18n.get('footer_manifesto')"></a>
+          </div>
+        </div>
+      </div>
+      <div class="foot-wordmark" aria-hidden="true">CHY3</div>
+      <div class="foot-bottom">
+        <span :text="$i18n.get('footer_legal')"></span>
+        <span :text="$i18n.get('footer_built')"></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

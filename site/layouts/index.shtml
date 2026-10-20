@@ -1,0 +1,279 @@
+<extend template="base.shtml">
+<head id="head">
+</head>
+<main id="main">
+  <section class="hero">
+    <div class="hero-media" aria-hidden="true">
+      <img src="$site.asset('hero-galaxy.jpg').link()" alt="" width="1600" height="900">
+    </div>
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <p class="kicker"><span class="kicker-dot"></span><span :text="$i18n.get('home_hero_kicker')"></span></p>
+        <h1 class="hero-title">
+          <span class="hero-line" :text="$i18n.get('home_hero_title_a')"></span>
+          <span class="hero-line hero-line-accent" :text="$i18n.get('home_hero_title_b')"></span>
+        </h1>
+        <p class="hero-lede" :text="$i18n.get('home_hero_lede')"></p>
+        <div class="hero-actions">
+          <a class="btn btn-signal" href="$site.page('projects').link()">
+            <span :text="$i18n.get('home_hero_cta_primary')"></span>
+            <span class="btn-arrow">→</span>
+          </a>
+          <a class="btn btn-ghost" href="$site.page('about').link()" :text="$i18n.get('home_hero_cta_secondary')"></a>
+        </div>
+      </div>
+      <div class="orbit-stage" aria-hidden="true">
+        <div class="orbit-field"></div>
+        <div class="orbit-ring orbit-ring-1"></div>
+        <div class="orbit-ring orbit-ring-2"></div>
+        <div class="orbit-ring orbit-ring-3"></div>
+        <div class="orbit-core">
+          <div class="orbit-core-inner"></div>
+        </div>
+        <div class="orbit-node orbit-node-1"><i></i><span :text="$i18n.get('home_hero_orbit_1')"></span></div>
+        <div class="orbit-node orbit-node-2"><i></i><span :text="$i18n.get('home_hero_orbit_2')"></span></div>
+        <div class="orbit-node orbit-node-3"><i></i><span :text="$i18n.get('home_hero_orbit_3')"></span></div>
+        <div class="orbit-star orbit-star-1"></div>
+        <div class="orbit-star orbit-star-2"></div>
+        <div class="orbit-star orbit-star-3"></div>
+      </div>
+    </div>
+    <div class="hero-foot">
+      <div class="container hero-foot-inner">
+        <span class="hero-scroll-label" :text="$i18n.get('home_hero_scroll')"></span>
+        <span class="hero-foot-meta">
+          <span :text="$i18n.get('home_hero_status')"></span>
+          <span class="hero-meta-sep"></span>
+          <span :text="$i18n.get('home_hero_note')"></span>
+        </span>
+        <span class="hero-serial">CHY3 / 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <div class="ticker-set">
+        <span :text="$i18n.get('home_ticker_1')"></span><i>✳</i>
+        <span :text="$i18n.get('home_ticker_2')"></span><i>✳</i>
+        <span :text="$i18n.get('home_ticker_3')"></span><i>✳</i>
+        <span :text="$i18n.get('home_ticker_4')"></span><i>✳</i>
+      </div>
+      <div class="ticker-set">
+        <span :text="$i18n.get('home_ticker_1')"></span><i>✳</i>
+        <span :text="$i18n.get('home_ticker_2')"></span><i>✳</i>
+        <span :text="$i18n.get('home_ticker_3')"></span><i>✳</i>
+        <span :text="$i18n.get('home_ticker_4')"></span><i>✳</i>
+      </div>
+    </div>
+  </div>
+
+  <section class="section section-projects" id="projects">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-label"><span :text="$i18n.get('home_projects_label')"></span></p>
+        <div class="section-title-row">
+          <h2 class="display-2">
+            <span :text="$i18n.get('home_projects_title_a')"></span>
+            <span class="muted" :text="$i18n.get('home_projects_title_b')"></span>
+          </h2>
+          <a class="text-link" href="$site.page('projects').link()">
+            <span :text="$i18n.get('home_projects_all')"></span>
+            <span>↗</span>
+          </a>
+        </div>
+        <p class="section-lede" :text="$i18n.get('home_projects_lede')"></p>
+      </div>
+      <div class="project-list">
+        <ctx :loop="$site.page('projects').subpages()">
+          <a class="project-row" href="$loop.it.link()">
+            <ctx project="$loop.it">
+            <span class="project-index" :text="$ctx.project.custom.get('index')"></span>
+            <div class="project-body">
+              <h3 :text="$ctx.project.title"></h3>
+              <p :text="$ctx.project.description"></p>
+            </div>
+            <div class="project-meta">
+              <span class="status" data-tone="$ctx.project.custom.get('status_tone')"><i></i><span :text="$ctx.project.custom.get('status')"></span></span>
+              <span class="project-meta-item" :text="$ctx.project.custom.get('language')"></span>
+              <span class="project-meta-item">★ <span :text="$ctx.project.custom.get('stars')"></span></span>
+            </div>
+            <span class="project-arrow">↗</span>
+            </ctx>
+          </a>
+        </ctx>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-platform" id="platform">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-label" :text="$i18n.get('home_platform_label')"></p>
+        <h2 class="display-2" :text="$i18n.get('home_platform_title')"></h2>
+        <p class="section-lede" :text="$i18n.get('home_platform_lede')"></p>
+      </div>
+      <div class="stage-grid">
+        <a class="stage" href="$site.page('projects/idea-forge').link()">
+          <span class="stage-num">01</span>
+          <h3 :text="$i18n.get('home_platform_step1')"></h3>
+          <p :text="$i18n.get('home_platform_step1_copy')"></p>
+          <span class="stage-tool">IdeaForge</span>
+        </a>
+        <a class="stage" href="$site.page('projects/value-flow').link()">
+          <span class="stage-num">02</span>
+          <h3 :text="$i18n.get('home_platform_step2')"></h3>
+          <p :text="$i18n.get('home_platform_step2_copy')"></p>
+          <span class="stage-tool">ValueFlow</span>
+        </a>
+        <a class="stage" href="$site.page('projects/crea-sdk').link()">
+          <span class="stage-num">03</span>
+          <h3 :text="$i18n.get('home_platform_step3')"></h3>
+          <p :text="$i18n.get('home_platform_step3_copy')"></p>
+          <span class="stage-tool">CreaSDK</span>
+        </a>
+      </div>
+      <div class="section-foot">
+        <a class="text-link" href="$site.page('platform').link()">
+          <span :text="$i18n.get('home_platform_link')"></span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="feature" id="insight">
+    <div class="container">
+      <div :if="$site.page('insights').subpages().first?()">
+          <div class="feature-grid">
+            <div class="feature-copy">
+              <div class="feature-top">
+                <span class="section-label" :text="$i18n.get('home_insight_label')"></span>
+                <span class="feature-pill" :text="$i18n.get('insights_featured')"></span>
+              </div>
+              <h2 class="feature-title"><a href="$if.link()" :text="$if.title"></a></h2>
+              <p class="feature-lede" :text="$if.description"></p>
+              <div class="feature-actions">
+                <a class="btn btn-ink" href="$if.link()">
+                  <span :text="$i18n.get('home_insight_read')"></span>
+                  <span class="btn-arrow">→</span>
+                </a>
+                <a class="text-link text-link-ink" href="$site.page('insights').link()" :text="$i18n.get('home_insight_all')"></a>
+              </div>
+            </div>
+            <aside class="feature-aside">
+              <span class="feature-quote">“</span>
+              <div class="feature-meta">
+                <div>
+                  <span class="meta-label" :text="$i18n.get('article_category')"></span>
+                  <span class="meta-value" :text="$if.custom.get('category')"></span>
+                </div>
+                <div>
+                  <span class="meta-label" :text="$i18n.get('article_read_time')"></span>
+                  <span class="meta-value" :text="$if.custom.get('read_time')"></span>
+                </div>
+              </div>
+              <div class="feature-diagram" aria-hidden="true">
+                <span class="diagram-line"></span>
+                <span class="diagram-line"></span>
+                <span class="diagram-line"></span>
+                <span class="diagram-dot"></span>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <section class="section section-signals" id="signals">
+    <div class="container">
+      <p class="section-label" :text="$i18n.get('home_stats_label')"></p>
+      <div class="stats-grid">
+        <div class="stat">
+          <span class="stat-value">12<span class="stat-plus">+</span></span>
+          <span class="stat-label" :text="$i18n.get('home_stats_1')"></span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">2.4K<span class="stat-plus">+</span></span>
+          <span class="stat-label" :text="$i18n.get('home_stats_2')"></span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">8<span class="stat-plus">+</span></span>
+          <span class="stat-label" :text="$i18n.get('home_stats_3')"></span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" :text="$i18n.get('home_stats_4_value')"></span>
+          <span class="stat-label" :text="$i18n.get('home_stats_4')"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-roadmap" id="roadmap">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-label" :text="$i18n.get('home_roadmap_label')"></p>
+        <div class="section-title-row">
+          <h2 class="display-2" :text="$i18n.get('home_roadmap_title')"></h2>
+          <a class="text-link" href="$site.page('roadmap').link()">
+            <span :text="$i18n.get('home_roadmap_all')"></span>
+            <span>↗</span>
+          </a>
+        </div>
+        <p class="section-lede" :text="$i18n.get('home_roadmap_lede')"></p>
+      </div>
+      <div class="milestone-list">
+        <a class="milestone-row" href="$site.page('roadmap/core-platform-ga').link()">
+          <span class="milestone-q" :text="$site.page('roadmap/core-platform-ga').custom.get('quarter')"></span>
+          <div class="milestone-body">
+            <h3 :text="$site.page('roadmap/core-platform-ga').title"></h3>
+            <p :text="$site.page('roadmap/core-platform-ga').description"></p>
+          </div>
+          <span class="status" data-tone="$site.page('roadmap/core-platform-ga').custom.get('status_tone')"><i></i><span :text="$site.page('roadmap/core-platform-ga').custom.get('status')"></span></span>
+          <span class="milestone-arrow">→</span>
+        </a>
+        <a class="milestone-row" href="$site.page('roadmap/marketplace-launch').link()">
+          <span class="milestone-q" :text="$site.page('roadmap/marketplace-launch').custom.get('quarter')"></span>
+          <div class="milestone-body">
+            <h3 :text="$site.page('roadmap/marketplace-launch').title"></h3>
+            <p :text="$site.page('roadmap/marketplace-launch').description"></p>
+          </div>
+          <span class="status" data-tone="$site.page('roadmap/marketplace-launch').custom.get('status_tone')"><i></i><span :text="$site.page('roadmap/marketplace-launch').custom.get('status')"></span></span>
+          <span class="milestone-arrow">→</span>
+        </a>
+        <a class="milestone-row" href="$site.page('roadmap/ai-co-creation-suite').link()">
+          <span class="milestone-q" :text="$site.page('roadmap/ai-co-creation-suite').custom.get('quarter')"></span>
+          <div class="milestone-body">
+            <h3 :text="$site.page('roadmap/ai-co-creation-suite').title"></h3>
+            <p :text="$site.page('roadmap/ai-co-creation-suite').description"></p>
+          </div>
+          <span class="status" data-tone="$site.page('roadmap/ai-co-creation-suite').custom.get('status_tone')"><i></i><span :text="$site.page('roadmap/ai-co-creation-suite').custom.get('status')"></span></span>
+          <span class="milestone-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contribute">
+    <div class="container cta-inner">
+      <p class="cta-label" :text="$i18n.get('home_cta_label')"></p>
+      <div class="cta-grid">
+        <h2 class="cta-title">
+          <span :text="$i18n.get('home_cta_title_a')"></span>
+          <span :text="$i18n.get('home_cta_title_b')"></span>
+        </h2>
+        <div class="cta-side">
+          <p :text="$i18n.get('home_cta_lede')"></p>
+          <div class="cta-actions">
+            <a class="btn btn-ink" href="https://github.com/chy3xyz" rel="noopener noreferrer">
+              <span :text="$i18n.get('home_cta_button')"></span>
+              <span class="btn-arrow">↗</span>
+            </a>
+            <a class="btn btn-outline-ink" href="$site.page('about').link()" :text="$i18n.get('home_cta_secondary')"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

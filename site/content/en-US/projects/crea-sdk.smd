@@ -1,0 +1,41 @@
+---
+.title = "CreaSDK — Creator Toolkit",
+.date = .date("2026-01-01T00:00:00"),
+.layout = "article.shtml",
+.description = "A modular SDK for independent developers and creators, integrating payments, subscription management, content distribution, and community operations.",
+.translation_key = "project-crea-sdk",
+.custom = .{
+  .index = "03",
+  .repo = "chy3xyz/crea-sdk",
+  .language = "Go",
+  .stars = "412",
+  .kind = "project",
+  .kicker = "Project / 03",
+  .status = "Beta",
+  .status_tone = "beta",
+  .repo_url = "https://github.com/chy3xyz/crea-sdk",
+  .facts = [
+      .{ .label = "Repository", .value = "chy3xyz/crea-sdk" },
+      .{ .label = "Language", .value = "Go" },
+      .{ .label = "GitHub stars", .value = "412" }
+    ],
+},
+---
+
+CreaSDK is the assembly kit for creative monetization: payments, subscriptions, content distribution, and community operations, packaged as independent modules.
+
+# Assemble, don't adopt
+
+Most platforms ask a creator to move everything onto their rails. CreaSDK asks what you already have. Each module has a narrow interface and communicates over gRPC, so a team can adopt payments alone, or add subscriptions later without rewriting the product.
+
+# One interface over many rails
+
+The payments module abstracts Stripe, Alipay, and WeChat Pay behind a single transaction API and callback model. The subscription module handles one-time purchases, recurring plans, usage-based billing, and tiered pricing. The goal is not to hide the payment providers — it is to keep settlement logic out of every product surface.
+
+# Distribution with control
+
+The content module provides encryption, entitlement checks, and a distribution pipeline that can target by region, tier, or access level. Creators can put paid content behind an API call instead of building a DRM system from scratch. The community module adds discussion, feedback collection, and user behavior analysis without another vendor.
+
+# Beta, in public
+
+CreaSDK is in beta with 412 GitHub stars. The next milestone is multi-language SDKs — TypeScript, Python, and Rust — so the same primitives are available to every stack.

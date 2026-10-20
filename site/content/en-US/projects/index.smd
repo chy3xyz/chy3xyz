@@ -1,0 +1,9 @@
+---
+.title = "Projects",
+.date = .date("2026-07-01T00:00:00"),
+.layout = "projects-index.shtml",
+.description = "Open-source instruments for the creative economy: IdeaForge, ValueFlow, and CreaSDK.",
+.translation_key = "projects-index",
+---
+
+Three instruments, one pipeline. Each project can be adopted on its own.

@@ -1,0 +1,33 @@
+---
+.title = "Core Platform GA Release",
+.date = .date("2026-09-30T00:00:00"),
+.layout = "article.shtml",
+.description = "The IdeaForge and ValueFlow dual engines ship GA, delivering a complete workflow from idea incubation to monetization analytics.",
+.translation_key = "roadmap-core-ga",
+.custom = .{
+  .quarter = "2026 Q3",
+  .kind = "roadmap",
+  .kicker = "Roadmap / 2026 Q3",
+  .status = "In progress",
+  .status_tone = "now",
+  .facts = [
+      .{ .label = "Quarter", .value = "2026 Q3" },
+      .{ .label = "Status", .value = "In progress" },
+      .{ .label = "Scope", .value = "IdeaForge + ValueFlow" }
+    ],
+},
+---
+
+Q3 2026 is the most important milestone in CHY3's short history. After six months of closed development and a community alpha, IdeaForge and ValueFlow move to general availability.
+
+# What GA includes
+
+IdeaForge ships the complete incubation workflow: the ideation engine now routes across three language models, the prototype generator covers web, mobile, and API targets, and community review supports public critiques and forked branches. ValueFlow ships production-grade analytics: multi-platform ingestion, five attribution models, custom dashboards, and baseline forecasting, all through load and security testing.
+
+# What changes
+
+GA is not only a feature milestone. It marks the move from experiment to maintained product: semantic versioning, a complete API reference, a developer portal, and a public issue triage and moderation process. For teams that have been watching from a distance, Q3 is when the toolchain can enter production without a caveat.
+
+# How to prepare
+
+The alpha migration guide will be published two weeks before the release. Existing data will be migrated automatically. We will run two public office hours before launch for teams that need a review of their integration.

@@ -1,0 +1,33 @@
+---
+.title = "Open-Source Ecosystem",
+.date = .date("2026-07-01T00:00:00"),
+.layout = "page.shtml",
+.description = "CHY3 is an open technology ecosystem connecting creators, developers, and platform operators through standardized interfaces and community governance.",
+.translation_key = "ecosystem",
+.custom = .{
+  .eyebrow = "Ecosystem",
+  .highlights = [
+      .{ .label = "Participants", .value = "Independent creators, open-source developers, platforms, SMBs, researchers." },
+      .{ .label = "How we collaborate", .value = "GitHub, community forums, and regular hackathons." },
+      .{ .label = "Ecosystem goal", .value = "50+ core contributors and 200+ integrated projects by 2027." }
+    ],
+},
+---
+
+CHY3's long-term advantage is not the number of lines we write. It is the number of people who can build on the same protocols.
+
+# Standard interfaces
+
+Every CHY3 tool communicates through explicit API contracts and webhook events. A third-party system that implements the same contract is part of the ecosystem, whether or not it uses our code. The goal is interoperability, not lock-in.
+
+# Transparent governance
+
+Core protocol changes go through a public RFC process, and significant decisions are put to a community vote. No single company should own the direction of the architecture.
+
+# Aligned incentives
+
+We want downstream projects to build commercial products on CHY3 infrastructure. Sponsorship, joint promotion, and technical support are ways to return value to the contributors who make the ecosystem useful.
+
+# Who is here
+
+Independent creators bring the demand. Open-source developers bring the engine. Content platforms and small businesses bring scale. Researchers bring the questions that keep the model honest. Today the network includes more than 1,000 developers across 15 countries. By 2027 we want 50 core maintainers, 200 integrated projects, and contributors in 30 countries.

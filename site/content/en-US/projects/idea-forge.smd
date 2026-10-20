@@ -1,0 +1,43 @@
+---
+.title = "IdeaForge — Idea Incubation Engine",
+.date = .date("2026-03-01T00:00:00"),
+.layout = "article.shtml",
+.description = "An end-to-end incubation engine that takes a raw spark to a tested prototype, with AI-assisted ideation, rapid prototyping, and community validation.",
+.translation_key = "project-idea-forge",
+.custom = .{
+  .index = "01",
+  .repo = "chy3xyz/idea-forge",
+  .language = "TypeScript",
+  .stars = "856",
+  .kind = "project",
+  .kicker = "Project / 01",
+  .status = "Active",
+  .status_tone = "live",
+  .repo_url = "https://github.com/chy3xyz/idea-forge",
+  .facts = [
+      .{ .label = "Repository", .value = "chy3xyz/idea-forge" },
+      .{ .label = "Language", .value = "TypeScript" },
+      .{ .label = "GitHub stars", .value = "856" }
+    ],
+},
+---
+
+Most creative tools start at execution. IdeaForge starts one step earlier — at the vague, unformed idea that has not yet earned a budget or a weekend.
+
+# From spark to structure
+
+Describe the idea in a sentence. The engine returns a product outline, a user-story map, and a feasibility read. Three language models are available, and the output is deliberately editable: the point is not to outsource taste, but to make the first draft of a product cheap enough to argue with.
+
+# Prototype in the open
+
+A template library generates a clickable UI prototype and the skeleton of an API document in one pass. A project can be published as an open collaboration, so other developers can suggest improvements, fork the branch, or join a structured critique. Community review is lightweight by design: a vote, a short expert note, and a clear record of what changed.
+
+# Validate before you invest
+
+Ideas fail quietly when they are tested in private. IdeaForge puts the premise in front of people early, when changing direction is still cheap. Teams leave the incubation stage with a prototype, a documented set of objections, and a decision they can defend.
+
+# What comes next
+
+The roadmap includes multimodal input — describe an idea with an image or a voice note — finer-grained collaboration permissions, and a deeper integration with CI/CD pipelines. IdeaForge is not trying to replace human creativity. It is trying to shorten the distance between a good idea and the first person who pays for it.
+
+IdeaForge is used by independent developers and small studios, with 856 GitHub stars and a weekly cycle of new incubated projects.

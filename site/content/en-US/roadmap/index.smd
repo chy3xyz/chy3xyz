@@ -1,0 +1,9 @@
+---
+.title = "Roadmap",
+.date = .date("2026-07-01T00:00:00"),
+.layout = "roadmap-index.shtml",
+.description = "What CHY3 is building, when it ships, and what is still being decided.",
+.translation_key = "roadmap-index",
+---
+
+Milestones are public, dated, and open for comment.

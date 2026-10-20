@@ -1,0 +1,41 @@
+---
+.title = "CreaSDK — 创作者工具包",
+.date = .date("2026-01-01T00:00:00"),
+.layout = "article.shtml",
+.description = "面向独立开发者和创作者的模块化 SDK，集成支付、订阅管理、内容分发和社区运营等核心能力。",
+.translation_key = "project-crea-sdk",
+.custom = .{
+  .index = "03",
+  .repo = "chy3xyz/crea-sdk",
+  .language = "Go",
+  .stars = "412",
+  .kind = "project",
+  .kicker = "项目 / 03",
+  .status = "测试中",
+  .status_tone = "beta",
+  .repo_url = "https://github.com/chy3xyz/crea-sdk",
+  .facts = [
+      .{ .label = "仓库", .value = "chy3xyz/crea-sdk" },
+      .{ .label = "语言", .value = "Go" },
+      .{ .label = "GitHub Stars", .value = "412" }
+    ],
+},
+---
+
+CreaSDK 是创意变现的组装件：支付、订阅、内容分发与社区运营，被打包成彼此独立的模块。
+
+# 按需组装
+
+大多数平台要求创作者把一切搬到自己的轨道上。CreaSDK 先问你手里已经有什么。每个模块都有很窄的接口，通过 gRPC 通信，团队可以只接支付，也可以之后再加入订阅，而不必重写产品。
+
+# 一个接口，多种通道
+
+支付模块把 Stripe、支付宝和微信支付抽象为统一的交易 API 与回调模型。订阅模块覆盖一次性购买、周期订阅、按量计费和分层定价。目标不是隐藏支付渠道，而是把结算逻辑从每一个产品界面里拿出去。
+
+# 可控的分发
+
+内容模块提供加密、授权校验和分发管道，可以按地域、用户等级或访问权限进行精细控制。创作者可以用一次 API 调用把付费内容放到门后，而不必从零实现一套 DRM。社区模块内置讨论、反馈收集和用户行为分析，不必再接入另一个供应商。
+
+# 公开的 Beta
+
+CreaSDK 目前处于 Beta 阶段，获得 412 个 GitHub Star。下一个里程碑是多语言 SDK——TypeScript、Python 和 Rust——让同一套基础能力覆盖所有技术栈。

@@ -1,0 +1,73 @@
+<extend template="base.shtml">
+<head id="head">
+</head>
+<main id="main">
+  <article class="article">
+    <header class="article-head">
+      <div class="container">
+        <div class="article-topline">
+          <a class="article-back" href="$page.parentSection().link()">
+            <span class="back-arrow">←</span>
+            <span :text="$page.parentSection().title"></span>
+          </a>
+          <span class="article-kicker" :text="$page.custom.get('kicker')"></span>
+          <span class="status" data-tone="$page.custom.getOr('status_tone', 'none')" :if="$page.custom.get?('status')"><i></i><span :text="$if"></span></span>
+        </div>
+        <h1 class="article-title" :text="$page.title"></h1>
+        <p class="article-lede" :text="$page.description"></p>
+        <div class="article-facts">
+          <ctx :loop="$page.custom.get('facts')">
+            <div class="article-fact">
+              <span class="meta-label" :text="$loop.it.get('label')"></span>
+              <span class="meta-value" :text="$loop.it.get('value')"></span>
+            </div>
+          </ctx>
+        </div>
+      </div>
+    </header>
+
+    <div class="container article-grid">
+      <div class="article-main">
+        <div class="prose" :html="$page.content()"></div>
+        <div class="article-end">
+          <a class="text-link" href="$page.parentSection().link()">
+            <span>←</span>
+            <span :text="$page.parentSection().title"></span>
+          </a>
+          <a class="article-top-link" href="#main">↑ <span :text="$i18n.get('article_top')"></span></a>
+        </div>
+      </div>
+      <aside class="article-aside">
+        <div class="aside-inner">
+          <div class="aside-repo" :if="$page.custom.get?('repo_url')">
+            <a class="btn btn-ghost btn-sm" href="$if" rel="noopener noreferrer">
+              <span :text="$i18n.get('article_repo_link')"></span>
+              <span>↗</span>
+            </a>
+          </div>
+          <div class="toc-block">
+            <p class="meta-label" :text="$i18n.get('article_toc')"></p>
+            <div class="toc" :html="$page.toc()"></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <nav class="article-nextprev" aria-label="Article navigation">
+      <div class="container nextprev-grid">
+        <div class="nextprev-item nextprev-prev" :if="$page.prevPage?()">
+          <a href="$if.link()">
+            <span class="meta-label"><span>←</span> <span :text="$i18n.get('article_previous')"></span></span>
+            <strong :text="$if.title"></strong>
+          </a>
+        </div>
+        <div class="nextprev-item nextprev-next" :if="$page.nextPage?()">
+          <a href="$if.link()">
+            <span class="meta-label"><span :text="$i18n.get('article_next')"></span> <span>→</span></span>
+            <strong :text="$if.title"></strong>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </article>
+</main>

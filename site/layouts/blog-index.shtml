@@ -1,0 +1,39 @@
+<extend template="base.shtml">
+<head id="head">
+</head>
+<main id="main">
+  <section class="collection-head">
+    <div class="container">
+      <p class="kicker"><span class="kicker-dot"></span><span :text="$i18n.get('blog_kicker')"></span></p>
+      <div class="collection-title-row">
+        <h1 class="display-1" :text="$i18n.get('blog_title')"></h1>
+        <div class="collection-count">
+          <span class="collection-count-num" :text="$page.subpages().len"></span>
+          <span class="collection-count-label" :text="$i18n.get('blog_count')"></span>
+        </div>
+      </div>
+      <p class="collection-lede" :text="$i18n.get('blog_lede')"></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="journal-list">
+        <ctx :loop="$page.subpages()">
+          <a class="journal-row" href="$loop.it.link()">
+            <ctx post="$loop.it">
+            <span class="journal-date" :text="$ctx.post.date.format('2006.01.02')"></span>
+            <div class="journal-body">
+              <span class="journal-desk" :text="$ctx.post.custom.get('desk')"></span>
+              <h2 :text="$ctx.post.title"></h2>
+              <p :text="$ctx.post.description"></p>
+            </div>
+            <span class="journal-author" :text="$ctx.post.custom.get('author')"></span>
+            <span class="project-arrow">↗</span>
+          </ctx>
+          </a>
+        </ctx>
+      </div>
+    </div>
+  </section>
+</main>

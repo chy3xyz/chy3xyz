@@ -1,0 +1,9 @@
+---
+.title = "项目",
+.date = .date("2026-07-01T00:00:00"),
+.layout = "projects-index.shtml",
+.description = "为创意经济而造的开源工具：IdeaForge、ValueFlow 与 CreaSDK。",
+.translation_key = "projects-index",
+---
+
+三件工具，一条链路。每个项目都可以独立接入。

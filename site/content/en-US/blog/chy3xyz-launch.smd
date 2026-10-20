@@ -1,0 +1,35 @@
+---
+.title = "CHY3 Launches: A New Paradigm for Open-Source Creative Monetization",
+.date = .date("2026-07-01T00:00:00"),
+.layout = "article.shtml",
+.description = "After six months of closed development, CHY3 is open to the public, launching IdeaForge and ValueFlow as its first two core projects.",
+.translation_key = "blog-launch",
+.custom = .{
+  .desk = "Platform announcement",
+  .author = "CHY3 Team",
+  .read_time = "4 min read",
+  .kind = "blog",
+  .kicker = "Journal / Announcement",
+  .facts = [
+      .{ .label = "Published", .value = "1 July 2026" },
+      .{ .label = "Author", .value = "CHY3 Team" },
+      .{ .label = "Desk", .value = "Platform announcement" }
+    ],
+},
+---
+
+Today, CHY3 is open to the public.
+
+Six months ago it was a note in Notion, built around a question we could not stop asking: why is the toolchain for independent creators so fragmented? Open source has transformed developer tools. It has barely touched the economics of creative work.
+
+# Two answers to start
+
+The first two projects represent two halves of the problem. IdeaForge answers “where do I begin?” — AI-assisted ideation and rapid prototyping make the first version cheap enough to test. ValueFlow answers “what is working?” — end-to-end analytics make every step from idea to revenue visible. Together they form a loop from incubation to data-driven iteration.
+
+# Open source is a commitment, not a license
+
+Every project is released under Apache 2.0. Governance follows a public RFC process, and roadmap discussions happen in GitHub Discussions. The code is the minimum. The real commitment is that decisions, disagreements, and trade-offs are visible to the people who depend on the tools.
+
+# Thank you
+
+To the 100+ alpha testers who gave feedback before there was anything polished: this is your launch too. CHY3 is at the beginning. We are looking for creators and developers who want to redefine how creative work creates value.

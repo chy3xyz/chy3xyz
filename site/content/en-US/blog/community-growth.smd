@@ -1,0 +1,33 @@
+---
+.title = "CHY3 Community Milestone: 1,000+ Developers On Board",
+.date = .date("2026-06-10T00:00:00"),
+.layout = "article.shtml",
+.description = "One month after launch, the CHY3 community has passed 1,000 registered developers with more than 300 pull requests.",
+.translation_key = "blog-community",
+.custom = .{
+  .desk = "Community",
+  .author = "Mira Zhang",
+  .read_time = "4 min read",
+  .kind = "blog",
+  .kicker = "Journal / Community",
+  .facts = [
+      .{ .label = "Published", .value = "10 June 2026" },
+      .{ .label = "Author", .value = "Mira Zhang" },
+      .{ .label = "Desk", .value = "Community" }
+    ],
+},
+---
+
+One month after launch, CHY3 has passed 1,000 registered developers. More importantly, the community has opened more than 300 pull requests across the stack — from core features to documentation translations.
+
+# What the numbers say
+
+IdeaForge has passed 850 GitHub stars. Its most-used features are the ideation engine and the prototype generator. Three contributors wrote non-English UI localizations — Japanese, French, and Portuguese — which was not in the plan. On ValueFlow, the community contributed four new payment adapters, extending coverage to providers our own team had never touched.
+
+# Governance, for real
+
+The first formal governance RFC, on improving the CLA process, passed with 87% support from 112 active members. We also started a monthly community call; the first one drew more than 60 people live, with most of the discussion focused on the CreaSDK beta and research for the creator marketplace.
+
+# What comes next
+
+A thousand is a starting line. The next community goal is 50 maintainers with commit access and contributors in at least 10 countries by the end of 2026. If you have not joined yet, come say hello on GitHub. A bug report, a pull request, or a good argument about the roadmap all count.

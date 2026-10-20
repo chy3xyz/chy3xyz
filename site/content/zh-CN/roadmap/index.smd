@@ -1,0 +1,9 @@
+---
+.title = "路线图",
+.date = .date("2026-07-01T00:00:00"),
+.layout = "roadmap-index.shtml",
+.description = "CHY3 正在构建什么、何时发布，以及仍在决定的事。",
+.translation_key = "roadmap-index",
+---
+
+每个里程碑都公开、有日期、可评论。

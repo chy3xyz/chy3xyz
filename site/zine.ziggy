@@ -1,0 +1,33 @@
+.zine_version = "0.16.2",
+.supermd = .{ .headings_h2 = true },
+.site = .multilingual(.{
+    .host_url = "https://chy3.xyz",
+    .i18n_dir_path = "i18n",
+    .layouts_dir_path = "layouts",
+    .assets_dir_path = "assets",
+    .static_assets = [
+        "CNAME",
+        "favicon.svg",
+        "fonts/archivo-latin.woff2",
+        "fonts/archivo-latin-ext.woff2",
+        "fonts/jetbrains-mono-latin.woff2",
+        "fonts/jetbrains-mono-latin-ext.woff2",
+        "og.jpg",
+    ],
+    .locales = [
+        .{
+            .code = "en-US",
+            .name = "EN",
+            .site_title = "CHY3",
+            .content_dir_path = "content/en-US",
+            .output_prefix_override = "",
+        },
+        .{
+            .code = "zh-CN",
+            .name = "中文",
+            .site_title = "CHY3",
+            .content_dir_path = "content/zh-CN",
+            .output_prefix_override = "zh",
+        },
+    ],
+}),

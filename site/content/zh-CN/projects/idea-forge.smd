@@ -1,0 +1,43 @@
+---
+.title = "IdeaForge — 创意孵化引擎",
+.date = .date("2026-03-01T00:00:00"),
+.layout = "article.shtml",
+.description = "从灵感到原型的全流程创意孵化工具，支持 AI 辅助构思、快速原型生成和社区协作验证。",
+.translation_key = "project-idea-forge",
+.custom = .{
+  .index = "01",
+  .repo = "chy3xyz/idea-forge",
+  .language = "TypeScript",
+  .stars = "856",
+  .kind = "project",
+  .kicker = "项目 / 01",
+  .status = "活跃",
+  .status_tone = "live",
+  .repo_url = "https://github.com/chy3xyz/idea-forge",
+  .facts = [
+      .{ .label = "仓库", .value = "chy3xyz/idea-forge" },
+      .{ .label = "语言", .value = "TypeScript" },
+      .{ .label = "GitHub Stars", .value = "856" }
+    ],
+},
+---
+
+大多数创意工具从「执行」开始。IdeaForge 往前一步——从那个还没赢得预算、也还没赢得一个周末的模糊想法开始。
+
+# 从灵感到结构
+
+用一句话描述你的想法。引擎会返回产品大纲、用户故事地图和技术可行性评估。系统接入了三个大语言模型，输出结果刻意保持可编辑：重点不是外包品味，而是让产品的第一版草稿便宜到可以被质疑。
+
+# 在开放中做原型
+
+模板库可以一次生成可点击的 UI 原型和 API 文档骨架。每个创意项目都可以发布为开放协作模式，其他开发者可以提交改进建议、fork 分支，或参与一次结构化的评审。社区评审被刻意做得轻量：一次投票、一段专家笔记，以及一份清晰的变更记录。
+
+# 在投入前验证
+
+想法在私下测试时，往往安静地失败。IdeaForge 把前提尽早放到真实用户面前，此时改变方向仍然便宜。团队离开孵化阶段时，会带着一个原型、一份被记录下来的反对意见，以及一个可以为之辩护的决定。
+
+# 下一步
+
+路线图包括多模态输入——用图片或语音描述创意——更细粒度的协作权限，以及与企业 CI/CD 管道的深度集成。IdeaForge 不想替代人的创造力，它想缩短一个好想法与第一个付费用户之间的距离。
+
+IdeaForge 已被独立开发者和小型工作室使用，在 GitHub 获得 856 星，每周都有新的创意被孵化。

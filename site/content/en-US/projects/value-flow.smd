@@ -1,0 +1,43 @@
+---
+.title = "ValueFlow — Monetization Pipeline Analytics",
+.date = .date("2026-02-01T00:00:00"),
+.layout = "article.shtml",
+.description = "An open-source analytics platform that traces the full journey from idea to revenue, with visual funnels, attribution models, and revenue forecasting.",
+.translation_key = "project-value-flow",
+.custom = .{
+  .index = "02",
+  .repo = "chy3xyz/value-flow",
+  .language = "Rust",
+  .stars = "624",
+  .kind = "project",
+  .kicker = "Project / 02",
+  .status = "Active",
+  .status_tone = "live",
+  .repo_url = "https://github.com/chy3xyz/value-flow",
+  .facts = [
+      .{ .label = "Repository", .value = "chy3xyz/value-flow" },
+      .{ .label = "Language", .value = "Rust" },
+      .{ .label = "GitHub stars", .value = "624" }
+    ],
+},
+---
+
+ValueFlow is an open-source analytics platform built for one question: where does creative income actually come from?
+
+# Make monetization observable
+
+The data layer is written in Rust for throughput and memory safety. A streaming pipeline aggregates transactions from Stripe, Paddle, Lemon Squeezy, and self-hosted payment gateways, then normalizes them into a single event stream. Attribution models — first touch, last touch, linear, and Shapley value — show which channels and content actually contribute to revenue.
+
+# A funnel you can interrogate
+
+Creators can slice the funnel by content type, acquisition channel, customer cohort, or time period. The interface is built around drill-down rather than dashboards that look busy and answer nothing. A forecasting module models seasonality and produces 30, 60, and 90-day revenue ranges, so scheduling and pricing decisions rest on evidence instead of instinct.
+
+# Built for teams that own their data
+
+ValueFlow can be self-hosted or used as a managed service. The open-source core includes the ingestion pipeline, attribution engine, and visualization layer. Team dashboards, enterprise SLAs, and managed infrastructure are paid additions — not gates in front of the core.
+
+# What is next
+
+Multi-currency conversion, tax calculation assistance, and deeper integrations with analytics tools such as Google Analytics and Mixpanel. ValueFlow v2.0 added multi-platform aggregation, custom dashboards, and AI-assisted anomaly detection.
+
+More than 50 independent creator teams use ValueFlow in production, and the repository has 624 stars.

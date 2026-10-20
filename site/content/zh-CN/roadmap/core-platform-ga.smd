@@ -1,0 +1,33 @@
+---
+.title = "核心平台 GA 发布",
+.date = .date("2026-09-30T00:00:00"),
+.layout = "article.shtml",
+.description = "IdeaForge + ValueFlow 双引擎正式发布，提供完整的创意孵化到变现分析工作流。",
+.translation_key = "roadmap-core-ga",
+.custom = .{
+  .quarter = "2026 Q3",
+  .kind = "roadmap",
+  .kicker = "路线图 / 2026 Q3",
+  .status = "进行中",
+  .status_tone = "now",
+  .facts = [
+      .{ .label = "季度", .value = "2026 Q3" },
+      .{ .label = "状态", .value = "进行中" },
+      .{ .label = "范围", .value = "IdeaForge + ValueFlow" }
+    ],
+},
+---
+
+2026 年第三季度是 CHY3 发展历程中最关键的里程碑。经过半年的封闭开发和社区 Alpha 测试，IdeaForge 和 ValueFlow 将正式发布 GA（General Availability）版本。
+
+# GA 包含什么
+
+IdeaForge 提供完整的创意孵化工作流：构思引擎已整合三个大语言模型，原型生成器覆盖 Web、移动端和 API 三种目标形态，社区评审支持公开批评和分支开发。ValueFlow 带来生产级的变现分析：多平台数据接入、五种归因模型、自定义 Dashboard 和基础收益预测，均已通过压力测试和安全性审计。
+
+# 变化在哪
+
+GA 不仅是功能里程碑，更意味着从实验进入稳定维护：语义化版本、完整的 API 文档、开发者门户，以及公开的 issue 分类和社区审核流程。对于一直在远处观察的团队，Q3 就是可以把工具链放心引入生产环境的时刻。
+
+# 如何准备
+
+Alpha 迁移指南将在发布前两周公布。现有数据会自动迁移。发布前我们会举办两场公开的 office hours，为需要检查集成方案的团队提供支持。

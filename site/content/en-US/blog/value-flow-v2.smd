@@ -1,0 +1,37 @@
+---
+.title = "ValueFlow v2.0: End-to-End Monetization Analytics",
+.date = .date("2026-06-20T00:00:00"),
+.layout = "article.shtml",
+.description = "ValueFlow receives a major update with multi-platform data aggregation, AI-driven revenue attribution, and custom dashboards.",
+.translation_key = "blog-value-flow-v2",
+.custom = .{
+  .desk = "Product update",
+  .author = "Alex Chen",
+  .read_time = "4 min read",
+  .kind = "blog",
+  .kicker = "Journal / Release",
+  .facts = [
+      .{ .label = "Published", .value = "20 June 2026" },
+      .{ .label = "Author", .value = "Alex Chen" },
+      .{ .label = "Desk", .value = "Product update" }
+    ],
+},
+---
+
+ValueFlow v2.0 is out. It is the largest release since the project began, and it concentrates on three things: broader data, smarter attribution, and more control over the analysis surface.
+
+# More platforms
+
+v2.0 adds Lemon Squeezy, Buy Me a Coffee, and Patreon alongside Stripe and Paddle. More important, the data-source plugin interface is now public. Any developer can write an adapter for their own payment provider and ship it without waiting for us.
+
+# Attribution that learns
+
+The old attribution engine was rule-based. The new one adds a lightweight model that estimates the relative contribution of channels and content types to a conversion. It is trained on a public creator-economy dataset, then fine-tuned locally on each deployment, so the result reflects the operator's own audience rather than a generic benchmark.
+
+# Dashboards that fit the business
+
+Drag-and-drop layout, custom metric formulas, and shared team boards bring enterprise BI ergonomics to independent creators. No new pricing tier: the features are in the open-source release.
+
+# Upgrade
+
+The full changelog and migration guide are in the repository. The data model is backward compatible; existing dashboards keep working.

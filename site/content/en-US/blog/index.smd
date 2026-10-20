@@ -1,0 +1,9 @@
+---
+.title = "Journal",
+.date = .date("2026-07-01T00:00:00"),
+.layout = "blog-index.shtml",
+.description = "Releases, decisions, and community milestones from the CHY3 project.",
+.translation_key = "blog-index",
+---
+
+Build notes from the open, newest first.
