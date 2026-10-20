@@ -124,6 +124,6 @@ The domain is registered at **Dynadot** (`ns1.dyna-ns.net` / `ns2.dyna-ns.net`).
 | AAAA | `@` | `2606:50c0:8003::153` |
 | CNAME | `www` | `chy3xyz.github.io` |
 
-The repo contains `site/assets/CNAME` (published as `dist/CNAME`) with `chy3.xyz`. In the repository's **Settings → Pages**, the source is **GitHub Actions** and the custom domain is `chy3.xyz`. HTTPS is enabled automatically after GitHub verifies the DNS records and issues a certificate.
+The repo contains `site/assets/CNAME` (published as `dist/CNAME`) with `chy3.xyz`. In the repository's **Settings → Pages**, the source is **GitHub Actions** and the custom domain is `chy3.xyz`. GitHub issues the TLS certificate automatically after the DNS records resolve; once the certificate exists, enable **Enforce HTTPS** in Settings → Pages (the API rejects enforcement before the certificate is issued).
 
 All internal links are root-relative, so the site must be served from a domain root. If it is hosted under a subpath instead, adjust `url_path_prefix` (simple sites) or `output_prefix_override` / host settings in `zine.ziggy`.
