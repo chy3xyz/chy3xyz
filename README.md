@@ -6,8 +6,7 @@
 
 <h3>Open-source systems in Zig. Creative infrastructure on the web.</h3>
 
-I build small, sharp tools that keep the stack honest —<br>
-frameworks, runtimes, ORMs, and a site for creative work that pays for itself.
+I build small, sharp tools that keep the stack honest — frameworks, runtimes, ORMs, and a site for creative work that pays for itself.
 
 [**chy3.xyz**](https://chy3.xyz) &nbsp;·&nbsp; [**repositories**](https://github.com/chy3xyz?tab=repositories) &nbsp;·&nbsp; [**hello@chy3.xyz**](mailto:hello@chy3.xyz)
 
@@ -55,6 +54,14 @@ Also pinned: **[vai](https://github.com/chy3xyz/vai)** · **[vf](https://github.
 
 [**chy3.xyz**](https://chy3.xyz) is the public face of CHY3: a bilingual, content-driven site about making creative work pay. It is built with [zdoc](https://github.com/chy3xyz/zdoc), hand-written CSS, and a very small amount of vanilla JavaScript — no framework, no bundler. The source lives in this repository; build and deploy notes are in **[DEVELOPMENT.md](DEVELOPMENT.md)**.
 
+### Writing
+
+Notes from the site on making creative work pay:
+
+- [The 2026 Creator Economy: From Attention to Value](https://chy3.xyz/insights/creator-economy-2026/)
+- [Designing Commercial Paths for Open-Source Projects](https://chy3.xyz/insights/open-source-monetization/)
+- [Technical Architecture for Creative Monetization](https://chy3.xyz/insights/platform-ecosystem-design/)
+
 ### Say hello
 
 If you're building Zig infrastructure, or trying to make creative work pay, my inbox is open: **[hello@chy3.xyz](mailto:hello@chy3.xyz)**.
@@ -68,6 +75,7 @@ If you're building Zig infrastructure, or trying to make creative work pay, my i
 
 - 当前：[zmodu](https://github.com/chy3xyz/zmodu)、[zfinal](https://github.com/chy3xyz/zfinal)、[zdoc](https://github.com/chy3xyz/zdoc)
 - 代表项目：[zent](https://github.com/chy3xyz/zent)、[vai](https://github.com/chy3xyz/vai)、[vf](https://github.com/chy3xyz/vf)
+- 写作：[Insights](https://chy3.xyz/insights/) — 关于开源商业化与创意经济
 - 联系：[hello@chy3.xyz](mailto:hello@chy3.xyz)
 
 </details>
