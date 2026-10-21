@@ -1,129 +1,77 @@
-# CHY3 — chy3.xyz
+<div align="center">
 
-Bilingual marketing site for **CHY3**, an open-source creative-monetization infrastructure project. The site is built with [zdoc](https://github.com/chy3xyz/zdoc): Markdown content, SuperHTML layouts, and a hand-written design system. No Astro, no Tailwind, no JavaScript framework.
+<a href="https://chy3.xyz">
+  <img src=".github/assets/banner.png" alt="CHY3 — small tools, sharp edges. Open-source systems in Zig." width="100%">
+</a>
 
-## Stack
+<h3>Open-source systems in Zig. Creative infrastructure on the web.</h3>
 
-- **zdoc 0.17.0** — a Zig static-site generator (a fork of Zine). Content lives in SuperMD files; layouts are SuperHTML templates.
-- **Bilingual by build** — English at the root, Chinese under `/zh/`, through zdoc's multilingual site config and `translation_key` page matching.
-- **Design system** — hand-written CSS. Archivo (variable) for display and body, JetBrains Mono for labels and data. One signal accent: vermilion `#ff5a36` on near-black `#07090b`. Self-hosted fonts.
-- **Motion** — a small vanilla IntersectionObserver script for scroll reveals and a reading-progress bar. Everything is visible without JavaScript.
+I build small, sharp tools that keep the stack honest —<br>
+frameworks, runtimes, ORMs, and a site for creative work that pays for itself.
 
-## Commands
+[**chy3.xyz**](https://chy3.xyz) &nbsp;·&nbsp; [**repositories**](https://github.com/chy3xyz?tab=repositories) &nbsp;·&nbsp; [**hello@chy3.xyz**](mailto:hello@chy3.xyz)
 
-```bash
-npm run build     # clean + build the site into dist/
-npm run preview   # serve dist/ at http://localhost:4321
-npm run dev       # zdoc dev server (http://localhost:1990)
-```
+</div>
 
-The first build downloads zdoc 0.17.0 for your platform into `.cache/zdoc/`. To use an existing binary instead:
-
-```bash
-ZDOC_BIN=/path/to/zdoc-0.17.0 npm run build
-```
-
-The binary must report `zdoc 0.17.0`; older binaries are rejected. Requires Node.js 20+ for the build scripts. zdoc itself has no runtime dependencies.
-
-## Structure
-
-```text
-site/
-  zine.ziggy              # multilingual site config, locales, static assets
-  content/en-US/          # English pages (output at /)
-  content/zh-CN/          # Chinese pages (output at /zh/)
-  i18n/en-US.ziggy        # UI copy, English
-  i18n/zh-CN.ziggy        # UI copy, Chinese
-  layouts/                # SuperHTML templates
-    templates/base.shtml  # chrome, head, navigation, footer
-    index.shtml           # home
-    projects-index.shtml  # collection layouts
-    insights-index.shtml
-    blog-index.shtml
-    roadmap-index.shtml
-    article.shtml         # project / insight / journal / milestone detail
-    page.shtml            # platform / ecosystem / about
-  assets/
-    style.css             # the design system
-    app.js                # reveal + progress + mobile menu behaviour
-    fonts/                # self-hosted Archivo and JetBrains Mono
-    favicon.svg, og.jpg, hero-galaxy.jpg
-scripts/
-  zdoc.mjs                # resolves/builds with zdoc, downloads it if needed
-  serve.mjs               # dependency-free static server for dist/
-```
-
-## Adding a page
-
-Content is a SuperMD file. The filename becomes the URL:
-
-- `site/content/en-US/projects/idea-forge.smd` → `/projects/idea-forge/`
-- `site/content/zh-CN/projects/idea-forge.smd` → `/zh/projects/idea-forge/`
-
-Every page has frontmatter:
-
-```yaml
 ---
-.title = "IdeaForge — Idea Incubation Engine",
-.date = .date("2026-03-01T00:00:00"),
-.layout = "article.shtml",
-.description = "One-line summary used for cards and metadata.",
-.translation_key = "project-idea-forge",
-.custom = .{
-  .kind = "project",
-  .kicker = "Project / 01",
-  .status = "Active",
-  .status_tone = "live",
-  .repo = "chy3xyz/idea-forge",
-  .repo_url = "https://github.com/chy3xyz/idea-forge",
-  .language = "TypeScript",
-  .stars = "856",
-  .facts = [
-    .{ .label = "Repository", .value = "chy3xyz/idea-forge" },
-    .{ .label = "Language", .value = "TypeScript" },
-    .{ .label = "GitHub stars", .value = "856" },
-  ],
-},
----
-```
 
-Body headings use a single `#`; `site/zine.ziggy` sets `supermd.headings_h2 = true`, so they render as `<h2>`.
+### Now
 
-## Bilingual copy
+- Building **[zmodu](https://github.com/chy3xyz/zmodu)** — a compile-time modular framework and worker-oriented runtime for Zig.
+- Shipping **[zfinal](https://github.com/chy3xyz/zfinal)** — an AI-first Zig web framework with codegen, manifests, and an ORM.
+- Maintaining **[zdoc](https://github.com/chy3xyz/zdoc)** — turn a folder of Markdown into a documentation site.
+- Running **[chy3.xyz](https://chy3.xyz)** — a bilingual home for open-source creative infrastructure.
 
-UI strings live in `site/i18n/en-US.ziggy` and `site/i18n/zh-CN.ziggy`. Both files must keep the same keys. Templates read them with:
+### Selected work
 
-```html
-<span :text="$i18n.get('nav_projects')"></span>
-```
+| Project | Stack | What it is |
+|:--|:--|:--|
+| **[zmodu](https://github.com/chy3xyz/zmodu)** | `Zig` | Compile-time modular application framework and worker-oriented runtime. [Docs](https://chy3xyz.github.io/zmodu/) |
+| **[zfinal](https://github.com/chy3xyz/zfinal)** | `Zig` | AI-first web framework: codegen, JSON manifests, ORM, CSRF, and WebSocket. |
+| **[zent](https://github.com/chy3xyz/zent)** | `Zig` | Comptime-driven entity framework / ORM for SQLite, PostgreSQL, and MySQL. |
+| **[zdoc](https://github.com/chy3xyz/zdoc)** | `Zig` | Markdown folder → docs site. One binary, no config. Fork of Zine. |
+| **[chy3.xyz](https://github.com/chy3xyz/chy3xyz)** | `HTML` `CSS` | This repository. Bilingual site for CHY3, built with zdoc. |
 
-Keys are Ziggy identifiers, so use underscores (`nav_projects`), not dots. Page copy (titles, descriptions, facts) lives in each locale's content tree. Set the same `translation_key` on corresponding pages so the language switcher and `hreflang` links connect them.
+Also pinned: **[vai](https://github.com/chy3xyz/vai)** · **[vf](https://github.com/chy3xyz/vf)** · **[zgraphql](https://github.com/chy3xyz/zgraphql)** · **[rszero](https://github.com/chy3xyz/rszero)**
 
-## Design notes
+### Toolbox
 
-- **Palette:** `--ink #07090b`, `--paper #f1ede4`, `--signal #ff5a36`, warm neutral greys. No second accent colour; status dots use paper, signal, or an outline.
-- **Type:** Archivo with a slight width stretch for display; JetBrains Mono for metadata. Chinese falls back to PingFang SC / Noto Sans SC.
-- **Geometry:** square corners for interactive elements, hairline rules, numbered sections, oversized wordmark. Orbit diagrams are CSS, not images; the galaxy photograph is used only as atmosphere in the hero.
-- **Motion:** `prefers-reduced-motion` disables animations. Add `?noanim=1` to a URL to disable reveal animations for screenshots.
+<p>
+  <img src="https://img.shields.io/badge/Zig-07090b?style=flat-square&amp;logo=zig&amp;logoColor=f7a41d" alt="Zig">
+  <img src="https://img.shields.io/badge/Rust-07090b?style=flat-square&amp;logo=rust&amp;logoColor=f1ede4" alt="Rust">
+  <img src="https://img.shields.io/badge/TypeScript-07090b?style=flat-square&amp;logo=typescript&amp;logoColor=3178c6" alt="TypeScript">
+  <img src="https://img.shields.io/badge/V-07090b?style=flat-square&amp;logo=v&amp;logoColor=f1ede4" alt="V">
+  <img src="https://img.shields.io/badge/Solidity-07090b?style=flat-square&amp;logo=solidity&amp;logoColor=a3a59f" alt="Solidity">
+  <img src="https://img.shields.io/badge/PostgreSQL-07090b?style=flat-square&amp;logo=postgresql&amp;logoColor=4169e1" alt="PostgreSQL">
+  <img src="https://img.shields.io/badge/SQLite-07090b?style=flat-square&amp;logo=sqlite&amp;logoColor=9ad7ff" alt="SQLite">
+  <img src="https://img.shields.io/badge/Docker-07090b?style=flat-square&amp;logo=docker&amp;logoColor=2496ed" alt="Docker">
+</p>
 
-## Deploy to GitHub Pages
+### The site
 
-`npm run build` writes a static `dist/`. The repository deploys to GitHub Pages through `.github/workflows/pages.yml` on every push to `main`, and publishes the custom domain `chy3.xyz`.
+<a href="https://chy3.xyz">
+  <img src=".github/assets/site-preview.png" alt="chy3.xyz — open-source creative infrastructure" width="100%">
+</a>
 
-The domain is registered at **Dynadot** (`ns1.dyna-ns.net` / `ns2.dyna-ns.net`). GitHub Pages needs these records at the DNS host:
+[**chy3.xyz**](https://chy3.xyz) is the public face of CHY3: a bilingual, content-driven site about making creative work pay. It is built with [zdoc](https://github.com/chy3xyz/zdoc), hand-written CSS, and a very small amount of vanilla JavaScript — no framework, no bundler. The source lives in this repository; build and deploy notes are in **[DEVELOPMENT.md](DEVELOPMENT.md)**.
 
-| Type | Name | Value |
-|---|---|---|
-| A | `@` | `185.199.108.153` |
-| A | `@` | `185.199.109.153` |
-| A | `@` | `185.199.110.153` |
-| A | `@` | `185.199.111.153` |
-| AAAA | `@` | `2606:50c0:8000::153` |
-| AAAA | `@` | `2606:50c0:8001::153` |
-| AAAA | `@` | `2606:50c0:8002::153` |
-| AAAA | `@` | `2606:50c0:8003::153` |
-| CNAME | `www` | `chy3xyz.github.io` |
+### Say hello
 
-The repo contains `site/assets/CNAME` (published as `dist/CNAME`) with `chy3.xyz`. In the repository's **Settings → Pages**, the source is **GitHub Actions** and the custom domain is `chy3.xyz`. GitHub issues the TLS certificate automatically after the DNS records resolve; once the certificate exists, enable **Enforce HTTPS** in Settings → Pages (the API rejects enforcement before the certificate is issued).
+If you're building Zig infrastructure, or trying to make creative work pay, my inbox is open: **[hello@chy3.xyz](mailto:hello@chy3.xyz)**.
 
-All internal links are root-relative, so the site must be served from a domain root. If it is hosted under a subpath instead, adjust `url_path_prefix` (simple sites) or `output_prefix_override` / host settings in `zine.ziggy`.
+<details>
+<summary><b>中文简介</b></summary>
+
+<br>
+
+我是 **chy3xyz**，主要用 Zig 构建开源基础设施：应用框架、运行时、ORM、文档工具，以及 [chy3.xyz](https://chy3.xyz)。
+
+- 当前：[zmodu](https://github.com/chy3xyz/zmodu)、[zfinal](https://github.com/chy3xyz/zfinal)、[zdoc](https://github.com/chy3xyz/zdoc)
+- 代表项目：[zent](https://github.com/chy3xyz/zent)、[vai](https://github.com/chy3xyz/vai)、[vf](https://github.com/chy3xyz/vf)
+- 联系：[hello@chy3.xyz](mailto:hello@chy3.xyz)
+
+</details>
+
+<div align="center">
+  <sub>Small tools. Sharp edges. Open source, all the way down.</sub>
+</div>

@@ -7,6 +7,7 @@ Bilingual (en/zh) marketing site for the CHY3 open-source creative-monetization 
 - **Stack:** zdoc 0.17.0 (Zig static-site generator, a Zine fork), SuperMD content, SuperHTML layouts, hand-written CSS/JS. No Astro, no Tailwind, no React, no bundler.
 - **Bilingual:** English at root paths (`/`, `/projects/`), Chinese under `/zh/`. zdoc multilingual site config + `translation_key` page matching; language switcher uses `$page.locales()`.
 - **Source root:** `site/`. Build output: `dist/`.
+- **Docs:** `README.md` is the GitHub profile page for `chy3xyz`; site build, content, and deployment notes live in `DEVELOPMENT.md`. Profile images are in `.github/assets/`.
 - **Entry config:** `site/zine.ziggy` (locales, content dirs, assets, static assets, `supermd.headings_h2 = true`).
 - **Layouts:** `site/layouts/templates/base.shtml` plus page layouts `index`, `projects-index`, `insights-index`, `blog-index`, `roadmap-index`, `article`, `page`.
 - **Assets:** `site/assets/style.css` (design system), `site/assets/app.js`, self-hosted fonts, `favicon.svg`, `og.jpg`, `hero-galaxy.jpg`, `CNAME` (published to `dist/CNAME`, custom domain `chy3.xyz`).
