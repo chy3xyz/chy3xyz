@@ -4,7 +4,7 @@ Bilingual marketing site for **CHY3**, an open-source creative-monetization infr
 
 ## Stack
 
-- **zdoc 0.16.2** — a Zig static-site generator (a fork of Zine). Content lives in SuperMD files; layouts are SuperHTML templates.
+- **zdoc 0.17.0** — a Zig static-site generator (a fork of Zine). Content lives in SuperMD files; layouts are SuperHTML templates.
 - **Bilingual by build** — English at the root, Chinese under `/zh/`, through zdoc's multilingual site config and `translation_key` page matching.
 - **Design system** — hand-written CSS. Archivo (variable) for display and body, JetBrains Mono for labels and data. One signal accent: vermilion `#ff5a36` on near-black `#07090b`. Self-hosted fonts.
 - **Motion** — a small vanilla IntersectionObserver script for scroll reveals and a reading-progress bar. Everything is visible without JavaScript.
@@ -17,13 +17,13 @@ npm run preview   # serve dist/ at http://localhost:4321
 npm run dev       # zdoc dev server (http://localhost:1990)
 ```
 
-The first build downloads the zdoc release binary for your platform into `.cache/zdoc/`. To use an existing binary instead:
+The first build downloads zdoc 0.17.0 for your platform into `.cache/zdoc/`. To use an existing binary instead:
 
 ```bash
-ZDOC_BIN=/path/to/zdoc npm run build
+ZDOC_BIN=/path/to/zdoc-0.17.0 npm run build
 ```
 
-Requires Node.js 20+ for the build scripts. zdoc itself has no runtime dependencies.
+The binary must report `zdoc 0.17.0`; older binaries are rejected. Requires Node.js 20+ for the build scripts. zdoc itself has no runtime dependencies.
 
 ## Structure
 

@@ -4,7 +4,7 @@ import { chmodSync, copyFileSync, existsSync, mkdirSync, rmSync, writeFileSync }
 import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const VERSION = '0.16.2';
+const VERSION = '0.17.0';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const siteDir = join(root, 'site');
 const outDir = join(root, 'dist');
@@ -68,16 +68,25 @@ async function download() {
   return target;
 }
 
+function binaryVersion(binary) {
+  if (!existsSync(binary)) return null;
+  const result = spawnSync(binary, ['version'], { encoding: 'utf8' });
+  if (result.status !== 0) return null;
+  const output = (result.stdout || '') + (result.stderr || '');
+  const match = output.match(/zdoc\s+(\d+\.\d+\.\d+)/);
+  return match ? match[1] : null;
+}
+
 function usable(binary) {
-  if (!existsSync(binary)) return false;
-  const result = spawnSync(binary, ['version'], { stdio: 'ignore' });
-  return result.status === 0;
+  return binaryVersion(binary) === VERSION;
 }
 
 function findBinary() {
   if (process.env.ZDOC_BIN) {
     if (!usable(process.env.ZDOC_BIN)) {
-      console.error('ZDOC_BIN is set but does not point to a working zdoc binary: ' + process.env.ZDOC_BIN);
+      console.error(
+        'ZDOC_BIN must point to zdoc ' + VERSION + ' (found ' + (binaryVersion(process.env.ZDOC_BIN) || 'unknown') + '): ' + process.env.ZDOC_BIN
+      );
       process.exit(1);
     }
     return process.env.ZDOC_BIN;
@@ -96,7 +105,7 @@ let binary = findBinary();
 if (!binary) binary = await download();
 
 if (!usable(binary)) {
-  console.error('The zdoc binary at ' + binary + ' is not executable on this platform.');
+  console.error('The zdoc binary at ' + binary + ' is not zdoc ' + VERSION + '.');
   process.exit(1);
 }
 
@@ -113,9 +122,8 @@ if (dev) {
 }
 
 rmSync(outDir, { recursive: true, force: true });
-const output = relative(siteDir, outDir) || '.';
-const result = spawnSync(binary, ['release', '--output', output, '--force'], {
-  cwd: siteDir,
+const result = spawnSync(binary, ['site', 'site', '--output', outDir, '--force'], {
+  cwd: root,
   stdio: 'inherit',
 });
 

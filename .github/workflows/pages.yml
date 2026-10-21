@@ -30,7 +30,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .cache/zdoc
-          key: zdoc-${{ runner.os }}-${{ runner.arch }}-0.16.2
+          key: zdoc-${{ runner.os }}-${{ runner.arch }}-0.17.0
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

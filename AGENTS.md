@@ -4,13 +4,13 @@ Bilingual (en/zh) marketing site for the CHY3 open-source creative-monetization 
 
 ## Project
 
-- **Stack:** zdoc 0.16.2 (Zig static-site generator, a Zine fork), SuperMD content, SuperHTML layouts, hand-written CSS/JS. No Astro, no Tailwind, no React, no bundler.
+- **Stack:** zdoc 0.17.0 (Zig static-site generator, a Zine fork), SuperMD content, SuperHTML layouts, hand-written CSS/JS. No Astro, no Tailwind, no React, no bundler.
 - **Bilingual:** English at root paths (`/`, `/projects/`), Chinese under `/zh/`. zdoc multilingual site config + `translation_key` page matching; language switcher uses `$page.locales()`.
 - **Source root:** `site/`. Build output: `dist/`.
 - **Entry config:** `site/zine.ziggy` (locales, content dirs, assets, static assets, `supermd.headings_h2 = true`).
 - **Layouts:** `site/layouts/templates/base.shtml` plus page layouts `index`, `projects-index`, `insights-index`, `blog-index`, `roadmap-index`, `article`, `page`.
 - **Assets:** `site/assets/style.css` (design system), `site/assets/app.js`, self-hosted fonts, `favicon.svg`, `og.jpg`, `hero-galaxy.jpg`, `CNAME` (published to `dist/CNAME`, custom domain `chy3.xyz`).
-- **Scripts:** `scripts/zdoc.mjs` resolves a local `zdoc` / `ZDOC_BIN` or downloads v0.16.2 to `.cache/zdoc/`; runs `zdoc release` from `site/`. `scripts/serve.mjs` serves `dist/` with no dependencies.
+- **Scripts:** `scripts/zdoc.mjs` resolves a local `zdoc` / `ZDOC_BIN` or downloads v0.17.0 to `.cache/zdoc/`; runs `zdoc site site --output dist` from the repo root. `scripts/serve.mjs` serves `dist/` with no dependencies.
 - **Deploy:** `.github/workflows/pages.yml` builds `dist/` and deploys to GitHub Pages on pushes to `main`. Pages source is GitHub Actions, custom domain `chy3.xyz`; `site/assets/CNAME` is a static asset so it lands at `dist/CNAME`.
 
 ## Commands
@@ -46,7 +46,7 @@ Bilingual (en/zh) marketing site for the CHY3 open-source creative-monetization 
 
 ## Gotchas
 
-- The zdoc v0.16.2 release binary exposes the older Zine CLI: use `zdoc release` from `site/` (the build script does this). The newer source tree also keeps the `release` command as an alias, so this stays compatible.
-- `zdoc release --force` writes into `dist/` but does not remove stale files; `scripts/zdoc.mjs` deletes `dist/` before each build.
+- zdoc 0.17.0 is required: `site/zine.ziggy` pins `.zine_version = "0.17.0"`, and `scripts/zdoc.mjs` checks the binary version before building. A binary from an older release is rejected and replaced by the pinned download.
+- `zdoc site --force` writes into `dist/` but does not remove stale files; `scripts/zdoc.mjs` deletes `dist/` before each build.
 - The base layout is fixed/sticky; scroll offsets use the `--head-h` variable in `style.css`.
 - Home sections have anchor IDs (`#projects`, `#platform`, `#insight`, `#signals`, `#roadmap`, `#contribute`) for in-page links and screenshot QA.
